@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from '../utils/Modal';
 
 import HeroImage from '../images/hero-image-01.jpg';
+import Logo from '../images/ABG_logo.png'
 
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
@@ -23,6 +24,7 @@ function HeroHome() {
                 <stop offset="1" stopColor="#5D5DFF" stopOpacity=".32" />
               </linearGradient>
             </defs>
+            
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -42,7 +44,7 @@ function HeroHome() {
             <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
               Uy tín - Nhanh chóng - An toàn
             </p>
-            <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
+            {/* <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
                 <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">
                   Đăng ký ngay
@@ -53,13 +55,12 @@ function HeroHome() {
                   Chi tiết
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
 
-          {/* Hero image */}
           <div>
             <div className="relative flex justify-center items-center" data-aos="fade-up" data-aos-delay="200">
-              <img className="mx-auto" src={HeroImage} width="1024" height="504" alt="Hero" />
+              <img className="mx-auto" src={HeroImage} width="650" height="450" alt="Hero" />
               <a
                 className="absolute group"
                 href="#0"
@@ -73,7 +74,6 @@ function HeroHome() {
                 <svg
                   className="w-16 h-16 sm:w-20 sm:h-20 hover:opacity-75 transition duration-150 ease-in-out"
                   viewBox="0 0 88 88"
-                  
                 >
                   <defs>
                     <linearGradient x1="78.169%" y1="9.507%" x2="24.434%" y2="90.469%" id="a">
