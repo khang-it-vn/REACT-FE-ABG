@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Modal from '../utils/Modal';
 
 import HeroImage from '../images/hero-image-01.jpg';
-import Logo from '../images/ABG_logo.png'
-
+import Logo from '../images/ABG_logo.png';
+import VideoItro from '../images/Video_Intro.mp4';
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
@@ -39,23 +39,11 @@ function HeroHome() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">
-              Chào mừng đến với APIBanking
+              Chào mừng đến với ABGBANKING
             </h1>
             <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
               Uy tín - Nhanh chóng - An toàn
             </p>
-            {/* <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
-              <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="#0">
-                  Đăng ký ngay
-                </a>
-              </div>
-              <div data-aos="fade-up" data-aos-delay="600">
-                <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="#0">
-                  Chi tiết
-                </a>
-              </div>
-            </div> */}
           </div>
 
           <div>
@@ -89,11 +77,11 @@ function HeroHome() {
                 </svg>
               </a>
             </div>
-
             {/* Modal */}
             <Modal id="modal" ariaLabel="modal-headline" show={videoModalOpen} handleClose={() => setVideoModalOpen(false)}>
               <div className="relative pb-9/16">
-                <iframe className="absolute w-full h-full" src="https://player.vimeo.com/video/174002812" title="Video" allowFullScreen></iframe>
+                {/* <iframe className="absolute w-full h-full" src="https://vimeo.com/802189106" title="Video" allowFullScreen></iframe> */}
+                <iframe className="absolute w-full h-full" src={VideoItro} title="Video" allowFullScreen></iframe>
               </div>
             </Modal>
           </div>

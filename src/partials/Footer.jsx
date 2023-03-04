@@ -31,10 +31,10 @@ function Footer() {
                 <h6 className="text-gray-200 font-medium mb-1">Danh mục sản phẩm</h6>
                 <ul>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Website APIBanking</Link>
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Website ABGBanking</Link>
                   </li>
                   <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Ứng dụng APIBanking</Link>
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Ứng dụng ABGBanking</Link>
                   </li>
                   <li className="mb-1">
                     <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"></Link>
