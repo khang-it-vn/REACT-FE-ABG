@@ -135,7 +135,7 @@ function Footer() {
             </ul>
 
             {/* Copyrights note */}
-            <div className="text-gray-400 text-sm mr-4">&copy; APIBanking.com Copyright</div>
+            <div className="text-gray-400 text-sm mr-4">&copy; ABGbanking.com Copyright</div>
 
           </div>
 
