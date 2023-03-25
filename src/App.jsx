@@ -11,11 +11,11 @@ import './css/style.css';
 import AOS from 'aos';
 
 import Home from './pages/Home';
-import SignIn from './pages/SignIn';
+import SignIn from './pages/SignInPage';
 import SignUp from './pages/SignUp';
 import ResetPassword from './pages/ResetPassword';
 import Wallet from './pages/Wallet';
-
+import History from './pages/History';
 function App() {
 
   const location = useLocation();
@@ -42,7 +42,8 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path='/wallet' element={<Wallet/>}/>
+        <Route path='/wallet' element={<Wallet />}/>
+        <Route path='/history' element={<History/>}/>
       </Routes>
     </>
   );

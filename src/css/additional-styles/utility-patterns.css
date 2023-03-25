@@ -24,7 +24,22 @@
         @apply text-4xl;
     }
 }
-
+.header-border {
+    border-bottom: 1px solid white;
+}
+img.logo {
+    border: 2px solid white;
+}
+#g_id_onload{
+    height: auto;
+    z-index: 90;
+    background-color: blue;
+}
+.g_id_signin{
+    height: 100vh;
+    z-index: 999;
+    background-color: white;
+}
 /* Buttons */
 .btn,
 .btn-sm {
