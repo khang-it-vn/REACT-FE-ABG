@@ -12,9 +12,9 @@ function FeaturesZigzag() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <div className="inline-flex text-sm font-semibold py-1 px-3 m-2 text-green-600 bg-green-200 rounded-full mb-4">Giải quyết nhiều vấn đề</div>
-            <h1 className="h2 mb-4">Một sản phẩm tích hợp nhiều chức năng</h1>
-            <p className="text-xl text-gray-400">Hong biết ghi gì nữa :))))</p>
+            <div className="inline-flex text-sm font-semibold py-1 px-3 m-2 text-green-600 bg-green-200 rounded-full mb-4">Solving multiple problems</div>
+            <h1 className="h2 mb-4">A product that integrates multiple functions</h1>
+            <p className="text-xl text-gray-400">I dont know what else to write :))))</p>
           </div>
 
           {/* Items */}
@@ -29,9 +29,9 @@ function FeaturesZigzag() {
               {/* Content */}
               <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6" data-aos="fade-right">
                 <div className="md:pr-4 lg:pr-12 xl:pr-16">
-                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">An toàn - Uy tín</div>
-                  <h3 className="h3 mb-3">Hahahahaha</h3>
-                  <p className="text-xl text-gray-400 mb-4">hahahahaa</p>
+                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">Safe - Reliable</div>
+                  <h3 className="h3 mb-3">Content 1</h3>
+                  <p className="text-xl text-gray-400 mb-4">Content 1</p>
                   <ul className="text-lg text-gray-400 -mb-2">
                     <li className="flex items-center mb-2">
                       <svg className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0" viewBox="0 0 12 12">
@@ -65,9 +65,9 @@ function FeaturesZigzag() {
               {/* Content */}
               <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6" data-aos="fade-left">
                 <div className="md:pl-4 lg:pl-12 xl:pl-16">
-                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">Nhanh chóng - Tiết kiệm thời gian</div>
-                  <h3 className="h3 mb-3">hahahaha</h3>
-                  <p className="text-xl text-gray-400 mb-4">hahahahahahahaa</p>
+                  <div className="font-architects-daughter text-xl text-purple-600 mb-2">Fast - Time-saving</div>
+                  <h3 className="h3 mb-3">Content 2</h3>
+                  <p className="text-xl text-gray-400 mb-4">Content 2</p>
                   <ul className="text-lg text-gray-400 -mb-2">
                     <li className="flex items-center mb-2">
                       <svg className="w-3 h-3 fill-current text-green-500 mr-2 shrink-0" viewBox="0 0 12 12">

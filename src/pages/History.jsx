@@ -32,20 +32,20 @@ function History() {
           {/* Wallet transaction history */}
           <div className="bg-white rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Lịch sử giao dịch
+            Transaction history
             </h2>
             <div className="overflow-x-auto">
               <table className="min-w-full table-auto mx-auto">
                 <thead>
                   <tr className="text-center bg-gray-800 border-b-2 border-gray-700">
                     <th className="py-3 px-4 font-semibold text-black-700">
-                      Loại giao dịch
+                    Transaction type
                     </th>
                     <th className="py-3 px-4 font-semibold text-gray-300">
-                      Số tiền
+                    Amount
                     </th>
                     <th className="py-3 px-4 font-semibold text-gray-300">
-                      Ngày thực hiện
+                    Execution date
                     </th>
                   </tr>
                 </thead>

@@ -7,7 +7,7 @@ function Testimonials() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4">Cảm ơn đã đến với Hệ thống giao dịch ABG của chúng tôi.</h2>
+            <h2 className="h2 mb-4">Thank you for using our ABG transaction system.</h2>
           </div>
               </div>
             </div>

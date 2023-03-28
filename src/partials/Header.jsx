@@ -26,16 +26,16 @@ function Header() {
                   to="/features"
                   className="text-black-900 hover:text-black-500 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                  Thị trường
+                Market
                 </Link>
               </li>
-              <Dropdown title="Giao dịch">
+              <Dropdown title="Transaction">
                 <li>
                   <Link
                     to="/wallet"
                     className="font-medium text-sm text-black-900 hover:text-purple-600 flex py-2 px-4 leading-tight"
                   >
-                    Ví của bạn
+                  Your wallet
                   </Link>
                 </li>
                 <li>
@@ -43,7 +43,7 @@ function Header() {
                     to="/history"
                     className="font-medium text-sm text-black-900 hover:text-purple-600 flex py-2 px-4 leading-tight"
                   >
-                    Lịch sử giao dịch
+                  Transaction history
                   </Link>
                 </li>
               </Dropdown>
@@ -52,7 +52,7 @@ function Header() {
                   to="/blog"
                   className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                  Tài liệu
+                Documentation
                 </Link>
               </li>
               <li>
@@ -60,7 +60,7 @@ function Header() {
                   to="/about"
                   className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                  Về chúng tôi
+                About us
                 </Link>
               </li>
             </ul>
@@ -70,7 +70,7 @@ function Header() {
                   to="/signin"
                   className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                  Đăng nhập
+                Log in
                 </Link>
               </li>
               {/* <li>
@@ -78,7 +78,7 @@ function Header() {
                   to="/signup"
                   className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3"
                 >
-                  Đăng ký
+                Sign up
                 </Link>
               </li> */}
             </ul>

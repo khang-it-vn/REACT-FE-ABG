@@ -25,9 +25,13 @@ function Footer() {
             <div className="md:col-span-8 lg:col-span-7 grid sm:grid-cols-3 gap-8">
               {/* 2nd block */}
               <div className="text-sm">
+
                 <h6 className="text-gray-200 font-medium mb-1">
                   Danh mục sản phẩm
                 </h6>
+
+                <h6 className="text-gray-200 font-medium mb-1">Product Categories</h6>
+
                 <ul>
                   <li className="mb-1">
                     <Link
@@ -38,12 +42,16 @@ function Footer() {
                     </Link>
                   </li>
                   <li className="mb-1">
+
                     <Link
                       to="#"
                       className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
                     >
                       Ứng dụng ABG Banking
                     </Link>
+
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">App ABGBanking</Link>
+
                   </li>
                   <li className="mb-1">
                     <Link
@@ -56,7 +64,7 @@ function Footer() {
 
               {/* 3rd block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Tài liệu</h6>
+                <h6 className="text-gray-200 font-medium mb-1">Documentation</h6>
                 <ul>
                   <li className="mb-1">
                     <Link
@@ -103,7 +111,7 @@ function Footer() {
 
               {/* 4th block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Đối tác</h6>
+                <h6 className="text-gray-200 font-medium mb-1">Partner</h6>
                 <ul>
                   <li className="mb-1">
                     <Link
@@ -144,12 +152,25 @@ function Footer() {
                     >
                       Ngân hàng Agribank
                     </Link>
+
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Sacombank</Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank MBbank</Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Vietinbank</Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Vietcombank</Link>
+                  </li>
+                  <li className="mb-1">
+                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Agribank</Link>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-
           {/* Bottom area */}
           <div className="md:flex md:items-center md:justify-between">
             {/* Social links */}

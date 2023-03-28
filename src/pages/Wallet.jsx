@@ -83,7 +83,7 @@ function Wallet() {
               <div class="flex flex-col md:flex-row md:items-center md:justify-between bg-gradient rounded-lg shadow-md p-8 mb-8">
                 <div class="text-center md:text-left">
                   <p class="text-xl font-semibold text-gray-900 mb-4">
-                    Số dư hiện tại
+                  Current balance
                   </p>
                   <p class="text-3xl md:text-4xl font-bold text-purple-600">
                     $10,000.00
@@ -91,7 +91,7 @@ function Wallet() {
                 </div>
                 <div class="text-center md:text-right mt-4 md:mt-0">
                   <p class="text-xl font-semibold text-gray-900 mb-4">
-                    Tổng giá trị
+                  Total value
                   </p>
                   <p class="text-3xl md:text-4xl font-bold text-purple-600">
                     $15,000.00
@@ -103,19 +103,19 @@ function Wallet() {
                   className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-1 rounded"
                   onClick={handleClick}
                 >
-                  Chuyển
+                Transfer
                 </button>
                 <button
                   className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-1 rounded"
                   onClick={handleQRClick}
                 >
-                  Nhận
+                Receive
                 </button>
                 <button
                   className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-1 rounded"
                   onClick={handleShowHistory}
                 >
-                  Lịch sử giao dịch
+                Transaction History
                 </button>
               </div>
               <div className="max-w-1/2 mx-auto mt-10">
@@ -132,7 +132,7 @@ function Wallet() {
                             fgColor="#000000"
                           />
                           <p className="text-red-500 text-base mt-3 font-medium text-center">
-                            Mã QR của tôi
+                          My QR Code
                           </p>
                         </div>
                         <div className="mt-4">
@@ -140,13 +140,13 @@ function Wallet() {
                             href="#"
                             className="btn btn-primary mr-2 px-4 py-2 rounded-md text-white font-medium bg-blue-600 hover:bg-blue-700"
                           >
-                            Chia sẻ
+                            Share
                           </a>
                           <a
                             href="#"
                             className="btn btn-secondary px-4 py-2 rounded-md text-green-100 font-medium bg-green-600 hover:bg-green-500"
                           >
-                            Sao chép
+                            Copy
                           </a>
                         </div>
                       </div>
@@ -163,13 +163,13 @@ function Wallet() {
                               className="block text-black-500 text-sm font-medium mb-1"
                               htmlFor="email"
                             >
-                              Địa chỉ ví <span className="text-red-600">*</span>
+                            Wallet address <span className="text-red-600">*</span>
                             </label>
                             <input
                               id="email"
                               type="email"
                               className="form-input w-full bg-white text-black-500 border border-gray-400 py-2 px-3 rounded focus:outline-none focus:border-blue-500"
-                              placeholder="Nhập địa chỉ ví"
+                              placeholder="Enter wallet address"
                               required
                             />
                           </div>
@@ -177,13 +177,13 @@ function Wallet() {
                         <div className="flex flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
                             <label className="block text-black-500 text-sm font-medium mb-1">
-                              Số tiền <span className="text-red-600">*</span>
+                            Amount of money <span className="text-red-600">*</span>
                             </label>
                             <input
                               id="money"
                               type="text"
                               className="form-input w-full bg-white text-black-500 border border-gray-400 py-2 px-3 rounded focus:outline-none focus:border-blue-500"
-                              placeholder="Nhập số tiền cần chuyển"
+                              placeholder="Enter the amount to be transferred"
                               onKeyPress={(e) => {
                                 if (isNaN(parseInt(e.key))) {
                                   e.preventDefault();
@@ -195,7 +195,7 @@ function Wallet() {
                         </div>
                         <div className="flex flex-wrap -mx-2 mb-4">
                           <label className="block text-black-500 text-sm font-medium mb-1">
-                            Nhập mPass <span className="text-red-600">*</span>
+                          Enter mPass <span className="text-red-600">*</span>
                           </label>
                           <div className="mt-1 flex">
                             {[...Array(6)].map((_, index) => (
@@ -234,7 +234,7 @@ function Wallet() {
                           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-7 rounded float-right"
                           onClick={handleMpass}
                         >
-                          Thanh toán
+                        Payment
                         </button>
                       </form>
                     </div>
@@ -244,7 +244,7 @@ function Wallet() {
                     <div className="w-full h-full">
                       <div className="my-10">
                         <h2 className="text-white-500 text-lg font-bold mb-5">
-                          Lịch sử giao dịch
+                        Transaction history
                         </h2>
                         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg sm:w-100">
                           <table className="min-w-full divide-y divide-gray-200">
@@ -254,19 +254,19 @@ function Wallet() {
                                   scope="col"
                                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 >
-                                  Ngày
+                                  Day
                                 </th>
                                 <th
                                   scope="col"
                                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 >
-                                  Địa chỉ người chuyển
+                                Sender address
                                 </th>
                                 <th
                                   scope="col"
                                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 >
-                                  Số tiền
+                                Amount of money
                                 </th>
                               </tr>
                             </thead>
