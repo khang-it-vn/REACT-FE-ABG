@@ -90,7 +90,7 @@ function SignInPage() {
                     className="border-t border-gray-700 border-dotted grow mr-3"
                     aria-hidden="true"
                   ></div>
-                  <div className="text-gray-400">Hoặc, đăng ký bằng email</div>
+                  <div className="text-gray-400">Or sign in with email</div>
                   <div
                     className="border-t border-gray-700 border-dotted grow ml-3"
                     aria-hidden="true"
@@ -109,7 +109,7 @@ function SignInPage() {
                         id="email"
                         type="email"
                         className="form-input w-full text-gray-300"
-                        placeholder="Điền email của bạn ở đây"
+                        placeholder="Enter your email address"
                         required
                       />
                     </div>
@@ -126,7 +126,7 @@ function SignInPage() {
                         id="password"
                         type="password"
                         className="form-input w-full text-gray-300"
-                        placeholder="Điền password của bạn tại đây"
+                        placeholder="Enter your password"
                         required
                       />
                     </div>
@@ -137,14 +137,14 @@ function SignInPage() {
                         <label className="flex items-center">
                           <input type="checkbox" className="form-checkbox" />
                           <span className="text-gray-400 ml-2">
-                            Lưu tài khoản
+                          Remember account
                           </span>
                         </label>
                         <Link
                           to="/reset-password"
                           className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
                         >
-                          Quên mật khẩu?
+                        Forgot password?
                         </Link>
                       </div>
                     </div>
@@ -152,18 +152,18 @@ function SignInPage() {
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
                       <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">
-                        Đăng ký
+                      Sign in
                       </button>
                     </div>
                   </div>
                 </form>
                 <div className="text-gray-400 text-center mt-6">
-                  Bạn chưa có tài khoản{" "}
+                You do not have an account yet ?{" "}
                   <Link
                     to="/signup"
                     className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
                   >
-                    Đăng ký ngay
+                  Register now
                   </Link>
                 </div>
               </div>
