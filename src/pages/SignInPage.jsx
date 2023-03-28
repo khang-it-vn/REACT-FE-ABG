@@ -1,59 +1,37 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from "../../database/firebaseconfig";
 import Header from "../partials/Header";
 import PageIllustration from "../partials/PageIllustration";
 import Banner from "../partials/Banner";
-import axios from "axios";
-// import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
-
-const googleProvider = new GoogleAuthProvider();
-import { useGoogleAuth } from "../utils/GoogleAuthContext ";
+import { useGoogleLogin } from "react-use-googlelogin";
+// import { useGoogleAuth } from "../utils/GoogleAuthContext ";
+// import { GoogleLogin, useGoogleLogin, useGoogleLogin } from "@react-oauth/google";
+// import axios from "axios";
 
 function SignInPage() {
-  // const from = "/email";
-  const { signIn } = useGoogleAuth();
-    // const handleGoogleLogin = async () => {
-    //   const data = await signInWithPopup(auth, googleProvider);
-    //   console.log(data.user.accessToken);
-    // };
+  // const { signIn } = useGoogleAuth();
+  // const { googleUser } = useGoogleLogin()
 
-    // axios.post("http://localhost:3000/login", {credential})
+  // const login = useGoogleLogin({
+  //   redirect_uri: "http://localhost:5173/signin",
+  //   // flow: 'auth-code',
+  //   onSuccess: (credentialResponse) => {
+  //     console.log(credentialResponse.access_token);
+  //   },
+  // });
+  const { signIn, loaded, error, user } = useGoogleLogin({
+    clientId:
+      "365062625571-oipgvhgr69fn34i2hahqdk1483hdqllg.apps.googleusercontent.com",
+    onSuccess: (user) => console.log("Login success:", user),
+    onFailure: (error) => console.log("Login failed:", error),
+    redirect_uri: "http://127.0.0.1:5173/signin",
+    scope: "appleghost1101@gmail.com",
+    prompt: "select_account",
+  });
 
-  // const responseGoogle = (response) => {
-  //   console.log(response);
-
-  //   var res = response.profileObj;
-
-  //   console.log(res);
-
-  //   debugger;
-
-  //   this.signup(response);
-  // };
-
-  // const getGoogleUrl = (from) => {
-  //   const rootUrl = `https://accounts.google.com/o/oauth2/v2/auth`;
-
-  //   const options = {
-  //     redirect_uri: "http://localhost:3000/login",
-  //     client_id:
-  //       "365062625571-oipgvhgr69fn34i2hahqdk1483hdqllg.apps.googleusercontent.com",
-  //     access_type: "offline",
-  //     response_type: "code",
-  //     prompt: "consent",
-  //     scope: [
-  //       "https://www.googleapis.com/auth/userinfo.profile",
-  //       "https://www.googleapis.com/auth/userinfo.email",
-  //     ].join(" "),
-  //     state: from,
-  //   };
-
-  //   const qs = new URLSearchParams(options);
-
-  //   return `${rootUrl}?${qs.toString()}`;
-  // };
+  // if (user) {
+  //   return <div>Welcome {user.name}!</div>;
+  // }
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -83,16 +61,6 @@ function SignInPage() {
                 {/* <form> */}
                 <div className="flex flex-wrap -mx-3">
                   <div className="w-full px-3">
-                    {/* <GoogleLogin */}
-                      {/* // clientId="365062625571-oipgvhgr69fn34i2hahqdk1483hdqllg.apps.googleusercontent.com"
-                      // onSuccess={(responseGoogle) => { */}
-                      {/* //   console.log(responseGoogle);
-                      // }}
-                      // onError={() => { */}
-                      {/* //   console.log("Login Failed");
-                      // }}
-                    /*> */}
-
                     <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
                       <svg
                         className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4"
@@ -104,25 +72,16 @@ function SignInPage() {
                         className="h-6 flex items-center border-r border-white border-opacity-25 mr-4"
                         aria-hidden="true"
                       ></span>
-                      <span
+                      <div>
+                        <button onClick={signIn}>Sign in with Google</button>
+                      </div>
+                      {/* <span
                         className="flex-auto pl-16 pr-8 -ml-16"
-                        onClick={signIn}
+                        // onClick={signIn}
                       >
                         Đăng nhập bằng Google
-                      </span>
+                      </span> */}
                     </button>
-
-                    {/* <a 
-                      href={getGoogleUrl(from)}
-                      > */}
-                    {/* <img
-                          className="pr-2"
-                          src={GoogleLogo}
-                          alt=""
-                          style={{ height: "2rem" }}
-                        /> */}
-                    {/* Continue with Google
-                      </a> */}
                   </div>
                 </div>
                 {/* </form> */}
