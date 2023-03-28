@@ -73,14 +73,14 @@ function Header() {
                 Log in
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/signup"
                   className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3"
                 >
                 Sign up
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
