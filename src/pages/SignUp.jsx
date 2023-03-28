@@ -75,7 +75,7 @@ function SignUp() {
                     </div>
                   </div>
                   <div className="text-sm text-gray-500 text-center">
-                    Tôi đồng ý với những quy định của APIBanking <Link to="#" className="underline text-gray-400 hover:text-gray-200 hover:no-underline transition duration-150 ease-in-out"> Chính sách trang web</Link>.
+                    Tôi đồng ý với những quy định của ABGBanking <Link to="#" className="underline text-gray-400 hover:text-gray-200 hover:no-underline transition duration-150 ease-in-out"> Chính sách trang web</Link>.
                                 </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
@@ -84,7 +84,7 @@ function SignUp() {
                   </div>
                 </form>
                 <div className="text-gray-400 text-center mt-6">
-                  Bạn đã sẳn sàng giao dịch với APIBanking? <Link to="signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Đăng nhập</Link>
+                  Bạn đã sẳn sàng giao dịch với ABGBanking? <Link to="signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"> Đăng nhập</Link>
                 </div>
               </div>
 

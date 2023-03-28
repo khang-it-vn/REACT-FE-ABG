@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../utils/Dropdown";
-
 import Logo from "../images/ABG_logo.png";
+
 function Header() {
   const trigger = useRef(null);
 
@@ -10,18 +10,16 @@ function Header() {
     <header className="absolute w-full z-30 bg-white-500">
       <div className="max-w-6xl mx-auto px-10 sm:px-5">
         <div className="flex items-center justify-between h-20">
-          {/* Desktop navigation */}
           <nav className="hidden md:flex md:grow">
             <Link to="/" className="block" aria-label="Cruip">
-              <div class="rounded-full">
+              <div className="rounded-full">
                 <img
-                  class="w-12 h-12 rounded-full bg-white border-2 border-white-600"
+                  className="w-12 h-12 rounded-full bg-white border-2 border-white-600"
                   src={Logo}
                   alt="Logo"
-                ></img>
+                />
               </div>
             </Link>
-            {/* Desktop menu links */}
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
@@ -31,9 +29,7 @@ function Header() {
                   Thị trường
                 </Link>
               </li>
-              {/* 1st level: hover */}
               <Dropdown title="Giao dịch">
-                {/* 2nd level: hover */}
                 <li>
                   <Link
                     to="/wallet"
@@ -59,7 +55,6 @@ function Header() {
                   Tài liệu
                 </Link>
               </li>
-
               <li>
                 <Link
                   to="/about"
@@ -69,8 +64,6 @@ function Header() {
                 </Link>
               </li>
             </ul>
-
-            {/* Desktop sign in links */}
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link

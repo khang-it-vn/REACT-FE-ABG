@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Modal from '../utils/Modal';
+import React, { useState } from "react";
+import Modal from "../utils/Modal";
 
-import HeroImage from '../images/hero-image-01.jpg';
-import Logo from '../images/ABG_logo.png';
-import VideoItro from '../images/Video_Intro.mp4';
+import HeroImage from "../images/hero-image-01.jpg";
+import Logo from "../images/ABG_logo.png";
+import VideoItro from "../images/Video_Intro.mp4";
 function HeroHome() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
@@ -17,14 +17,27 @@ function HeroHome() {
           data-aos="fade-up"
           data-aos-delay="400"
         >
-          <svg className="max-w-full" width="564" height="552" viewBox="0 0 564 552" fill="none">
+          <svg
+            className="max-w-full"
+            width="564"
+            height="552"
+            viewBox="0 0 564 552"
+            fill="none"
+          >
             <defs>
-              <linearGradient id="illustration-02" x1="-3.766" y1="300.204" x2="284.352" y2="577.921" gradientUnits="userSpaceOnUse">
+              <linearGradient
+                id="illustration-02"
+                x1="-3.766"
+                y1="300.204"
+                x2="284.352"
+                y2="577.921"
+                gradientUnits="userSpaceOnUse"
+              >
                 <stop stopColor="#5D5DFF" stopOpacity=".01" />
                 <stop offset="1" stopColor="#5D5DFF" stopOpacity=".32" />
               </linearGradient>
             </defs>
-            
+
             <path
               fillRule="evenodd"
               clipRule="evenodd"
@@ -41,14 +54,28 @@ function HeroHome() {
             <h1 className="h1 mb-4" data-aos="fade-up">
               Chào mừng đến với ABGBANKING
             </h1>
-            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
+            <p
+              className="text-xl text-gray-400 mb-8"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               Uy tín - Nhanh chóng - An toàn
             </p>
           </div>
 
           <div>
-            <div className="relative flex justify-center items-center" data-aos="fade-up" data-aos-delay="200">
-              <img className="mx-auto" src={HeroImage} width="650" height="450" alt="Hero" />
+            <div
+              className="relative flex justify-center items-center"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <img
+                className="mx-auto"
+                src={HeroImage}
+                width="650"
+                height="450"
+                alt="Hero"
+              />
               <a
                 className="absolute group"
                 href="#0"
@@ -64,7 +91,13 @@ function HeroHome() {
                   viewBox="0 0 88 88"
                 >
                   <defs>
-                    <linearGradient x1="78.169%" y1="9.507%" x2="24.434%" y2="90.469%" id="a">
+                    <linearGradient
+                      x1="78.169%"
+                      y1="9.507%"
+                      x2="24.434%"
+                      y2="90.469%"
+                      id="a"
+                    >
                       <stop stopColor="#EBF1F5" stopOpacity=".8" offset="0%" />
                       <stop stopColor="#EBF1F5" offset="100%" />
                     </linearGradient>
@@ -78,10 +111,20 @@ function HeroHome() {
               </a>
             </div>
             {/* Modal */}
-            <Modal id="modal" ariaLabel="modal-headline" show={videoModalOpen} handleClose={() => setVideoModalOpen(false)}>
+            <Modal
+              id="modal"
+              ariaLabel="modal-headline"
+              show={videoModalOpen}
+              handleClose={() => setVideoModalOpen(false)}
+            >
               <div className="relative pb-9/16">
                 {/* <iframe className="absolute w-full h-full" src="https://vimeo.com/802189106" title="Video" allowFullScreen></iframe> */}
-                <iframe className="absolute w-full h-full" src={VideoItro} title="Video" allowFullScreen></iframe>
+                <iframe
+                  className="absolute w-full h-full"
+                  src={VideoItro}
+                  title="Video"
+                  allowFullScreen
+                ></iframe>
               </div>
             </Modal>
           </div>

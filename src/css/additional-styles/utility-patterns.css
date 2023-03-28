@@ -14,6 +14,69 @@
 .h4 {
     @apply text-2xl font-bold leading-snug tracking-tight;
 }
+nav ul li a {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.flex {
+    font-family: "Open Sans", sans-serif;
+}
+
+.text-gray-900 {
+    color: #333;
+}
+
+.text-purple-600 {
+    color: #7048e8;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.mt-4 {
+    margin-top: 1rem;
+}
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-3xl {
+    font-size: 2rem;
+}
+
+.text-4xl {
+    font-size: 2.5rem;
+}
+
+.shadow-md:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
+}
+.bg-gradient {
+    background: linear-gradient(45deg, #7048e8, #3f51b5, #2196f3, #00bcd4, #4caf50, #f44336, #ff9800, #ffc107, #ffeb3b);
+    background-size: 1800% 1800%;
+    animation: gradient 20s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
 @screen md {
     .h1 {
@@ -30,15 +93,17 @@
 img.logo {
     border: 2px solid white;
 }
-#g_id_onload{
+#g_id_onload {
     height: auto;
     z-index: 90;
     background-color: blue;
 }
-.g_id_signin{
-    height: 100vh;
-    z-index: 999;
-    background-color: white;
+.black-text {
+    color: black;
+}
+
+form input {
+    color: black;
 }
 /* Buttons */
 .btn,
@@ -78,7 +143,6 @@ img.logo {
 .form-select {
     @apply py-3 px-4;
 }
-
 .form-input,
 .form-textarea {
     @apply placeholder-gray-500;
