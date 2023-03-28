@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import QRCode from "react-qr-code";
-import Dropdown from "../utils/Dropdown";
 import Header from "../partials/Header";
 import PageIllustration from "../partials/PageIllustration";
+import Footer from "../partials/Footer";
 
 function Wallet() {
   const [showForm, setShowForm] = useState(false);
@@ -157,7 +156,7 @@ function Wallet() {
                   {/* Form show nhập liệu */}
                   {showForm && (
                     <div className="max-w-sm mx-auto">
-                      <form>
+                      <form className="w-full">
                         <div className="flex flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
                             <label
@@ -232,7 +231,7 @@ function Wallet() {
                           </div>
                         </div>
                         <button
-                          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-10 rounded float-right"
+                          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-7 rounded float-right"
                           onClick={handleMpass}
                         >
                           Thanh toán
@@ -242,8 +241,8 @@ function Wallet() {
                   )}
                   {/* Form show lịch sử */}
                   {showHistory && (
-                    <div className="w-full">
-                      <div className="my-10"> 
+                    <div className="w-full h-full">
+                      <div className="my-10">
                         <h2 className="text-white-500 text-lg font-bold mb-5">
                           Lịch sử giao dịch
                         </h2>
@@ -303,6 +302,8 @@ function Wallet() {
           </div>
         </section>
       </main>
+      {/*  Site footer */}
+      <Footer />
     </div>
   );
 }

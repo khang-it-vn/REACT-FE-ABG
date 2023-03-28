@@ -73,14 +73,14 @@ function Header() {
                   Đăng nhập
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/signup"
                   className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3"
                 >
                   Đăng ký
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>
