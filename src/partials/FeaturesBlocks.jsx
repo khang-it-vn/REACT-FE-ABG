@@ -7,7 +7,7 @@ function FeaturesBlocks() {
         <div className="py-12 md:py-20">
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h2 className="h2 mb-4">Các tính năng vượt trội</h2>
+            <h2 className="h2 mb-4">Outstanding Features</h2>
           </div>
 
           {/* Items */}
@@ -43,9 +43,9 @@ function FeaturesBlocks() {
                   strokeWidth="2"
                 />
               </svg>
-              <h4 className="h4 mb-2">Tối ưu</h4>
+              <h4 className="h4 mb-2">Optimal</h4>
               <p className="text-lg text-gray-400 text-center">
-                Hệ thống giao dịch được xử lý một cách tối ưu.
+                The trading system is processed in an optimal way.
               </p>
             </div>
 
@@ -78,8 +78,10 @@ function FeaturesBlocks() {
                   strokeLinecap="square"
                 />
               </svg>
-              <h4 className="h4 mb-2"></h4>
-              <p className="text-lg text-gray-400 text-center"></p>
+              <h4 className="h4 mb-2">Convenience</h4>
+              <p className="text-lg text-gray-400 text-center">
+                Online payment allows you to make transactions without leaving your home or going to the bank. You can pay anytime and anywhere with just a few clicks or taps on your phone screen.
+              </p>
             </div>
 
             {/* 3rd item */}
@@ -122,8 +124,10 @@ function FeaturesBlocks() {
                   />
                 </g>
               </svg>
-              <h4 className="h4 mb-2"></h4>
-              <p className="text-lg text-gray-400 text-center"></p>
+              <h4 className="h4 mb-2">Speed</h4>
+              <p className="text-lg text-gray-400 text-center">
+                Online payment helps you save time as transactions are completed in seconds or minutes. You do not have to wait in line like with traditional payment methods.
+              </p>
             </div>
 
             {/* 4th item */}
@@ -159,8 +163,10 @@ function FeaturesBlocks() {
                   />
                 </g>
               </svg>
-              <h4 className="h4 mb-2"></h4>
-              <p className="text-lg text-gray-400 text-center"></p>
+              <h4 className="h4 mb-2">Security</h4>
+              <p className="text-lg text-gray-400 text-center">
+                Most online payment providers have strong security systems, including SSL encryption, two-factor authentication, and fraud detection. Your payment information is secured and safe.
+              </p>
             </div>
 
             {/* 5th item */}
@@ -193,8 +199,10 @@ function FeaturesBlocks() {
                   />
                 </g>
               </svg>
-              <h4 className="h4 mb-2"></h4>
-              <p className="text-lg text-gray-400 text-center"></p>
+              <h4 className="h4 mb-2">Diversity</h4>
+              <p className="text-lg text-gray-400 text-center">
+                Online payment provides many different payment methods, including credit cards, debit cards, online transfers, e-wallets, and more. You can choose the payment method that suits your needs and convenience.
+              </p>
             </div>
 
             {/* 6th item */}
@@ -234,8 +242,10 @@ function FeaturesBlocks() {
                   />
                 </g>
               </svg>
-              <h4 className="h4 mb-2"></h4>
-              <p className="text-lg text-gray-400 text-center"></p>
+              <h4 className="h4 mb-2">Extended features</h4>
+              <p className="text-lg text-gray-400 text-center">
+                Online payment providers often offer extended features, including account management, payment history tracking, and expense management. You can easily control your transactions and manage your personal finances more effectively.
+              </p>
             </div>
           </div>
         </div>

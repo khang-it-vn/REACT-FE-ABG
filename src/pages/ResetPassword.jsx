@@ -26,8 +26,8 @@ function ResetPassword() {
 
               {/* Page header */}
               <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h1 className="h1 mb-4">Bạn đã quên mật khẩu?</h1>
-                <p className="text-xl text-gray-400">Sử dụng email để đặt lại tài khoản.</p>
+                <h1 className="h1 mb-4">Did you forget your password?</h1>
+                <p className="text-xl text-gray-400">Use email to reset your account</p>
               </div>
 
               {/* Form */}
@@ -36,18 +36,18 @@ function ResetPassword() {
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                      <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="Điền email của bạn tại đây" required />
+                      <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="Enter your email here" required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Đặt lại mật khẩu</button>
+                      <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Reset Password</button>
                     </div>
                   </div>
                 </form>
                 <div className="text-gray-400 text-center mt-6">
-                  <Link to="/signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Hủy
-                  
+                  <Link to="/signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">
+                  Cancel
                   </Link>
                 </div>
               </div>
