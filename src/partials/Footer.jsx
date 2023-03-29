@@ -25,12 +25,9 @@ function Footer() {
             <div className="md:col-span-8 lg:col-span-7 grid sm:grid-cols-3 gap-8">
               {/* 2nd block */}
               <div className="text-sm">
-
                 <h6 className="text-gray-200 font-medium mb-1">
-                  Danh mục sản phẩm
+                  Product Categories
                 </h6>
-
-                <h6 className="text-gray-200 font-medium mb-1">Product Categories</h6>
 
                 <ul>
                   <li className="mb-1">
@@ -41,30 +38,14 @@ function Footer() {
                       Website ABG Banking
                     </Link>
                   </li>
-                  <li className="mb-1">
-
-                    <Link
-                      to="#"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    >
-                      Ứng dụng ABG Banking
-                    </Link>
-
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">App ABGBanking</Link>
-
-                  </li>
-                  <li className="mb-1">
-                    <Link
-                      to="#"
-                      className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
-                    ></Link>
-                  </li>
                 </ul>
               </div>
 
               {/* 3rd block */}
               <div className="text-sm">
-                <h6 className="text-gray-200 font-medium mb-1">Documentation</h6>
+                <h6 className="text-gray-200 font-medium mb-1">
+                  Documentation
+                </h6>
                 <ul>
                   <li className="mb-1">
                     <Link
@@ -118,7 +99,7 @@ function Footer() {
                       to="#"
                       className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
                     >
-                      Ngân hàng Sacombank
+                      Bank Sacombank
                     </Link>
                   </li>
                   <li className="mb-1">
@@ -126,7 +107,7 @@ function Footer() {
                       to="#"
                       className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
                     >
-                      Ngân hàng MBbank
+                      Bank MBbank
                     </Link>
                   </li>
                   <li className="mb-1">
@@ -134,7 +115,7 @@ function Footer() {
                       to="#"
                       className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
                     >
-                      Ngân hàng Vietinbank
+                      Bank Vietinbank
                     </Link>
                   </li>
                   <li className="mb-1">
@@ -142,7 +123,7 @@ function Footer() {
                       to="#"
                       className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
                     >
-                      Ngân hàng Vietcombank
+                      Bank Vietcombank
                     </Link>
                   </li>
                   <li className="mb-1">
@@ -150,22 +131,8 @@ function Footer() {
                       to="#"
                       className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out"
                     >
-                      Ngân hàng Agribank
+                      Bank Agribank
                     </Link>
-
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Sacombank</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank MBbank</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Vietinbank</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Vietcombank</Link>
-                  </li>
-                  <li className="mb-1">
-                    <Link to="#" className="text-gray-400 hover:text-gray-100 transition duration-150 ease-in-out">Bank Agribank</Link>
                   </li>
                 </ul>
               </div>
