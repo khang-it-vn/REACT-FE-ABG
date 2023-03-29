@@ -17,6 +17,7 @@ import ResetPassword from './pages/ResetPassword';
 import Wallet from './pages/Wallet';
 import History from './pages/History';
 import Markets from './pages/Markets';
+import ProductsManager from './manages/ProductsManager';
 function App() {
 
   const location = useLocation();
@@ -47,6 +48,7 @@ function App() {
         <Route path='/wallet' element={<Wallet />}/>
         <Route path='/history' element={<History/>}/>
         <Route path='/features' element={<Markets/>}/>
+        <Route path='/products' element={<ProductsManager/>}/>
       </Routes>
      
     </>

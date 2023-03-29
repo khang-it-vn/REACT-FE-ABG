@@ -72,15 +72,15 @@ function SignInPage() {
                         className="h-6 flex items-center border-r border-white border-opacity-25 mr-4"
                         aria-hidden="true"
                       ></span>
-                      <div>
+                      {/* <div>
                         <button onClick={signIn}>Sign in with Google</button>
-                      </div>
-                      {/* <span
+                      </div> */}
+                      <span
                         className="flex-auto pl-16 pr-8 -ml-16"
-                        // onClick={signIn}
+                        onClick={signIn}
                       >
                         Đăng nhập bằng Google
-                      </span> */}
+                      </span>
                     </button>
                   </div>
                 </div>

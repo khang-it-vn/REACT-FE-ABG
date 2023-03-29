@@ -11,7 +11,7 @@ const Markets = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`https://api.binance.com/api/v3/ticker/24hr`);
+      const result = await axios.get(`https://api.binance.com/api/v3/ticker/24hr`);
       setMarkets(result.data);
     };
     fetchData();
