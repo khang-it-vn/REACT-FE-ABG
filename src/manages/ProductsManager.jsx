@@ -38,17 +38,20 @@ function ProductsManager() {
   // xóa sản phẩm khỏi danh sách
   const deleteProduct = (id) => {
     setProducts((prevProducts) =>
-      prevProducts.filter((product) => product.id !== id)
+      prevProducts
+        .filter((product) => product.id !== id)
+        .map((product, index) => ({ ...product, id: index + 1 }))
     );
   };
+  
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
       <Header />
       <PageIllustration />
-      <React.Fragment>
-        <div className="my-10">
-          <div className="my-4 mb-10">
+      <div className="my-10">
+        <div className="my-4 mb-10">
+          <React.Fragment>
             <div className="flex justify-center">
               <form className="mr-20">
                 <h1 className="text-white-500 text-2xl font-bold my-10 mb-5">
@@ -149,10 +152,10 @@ function ProductsManager() {
                 </div>
               </form>
             </div>
-          </div>
+          </React.Fragment>
         </div>
-        <Footer />
-      </React.Fragment>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import Header from "../partials/Header";
 import PageIllustration from "../partials/PageIllustration";
 
 function History() {
-  // define transaction data as an array of objects
+  // define transaction data as an array of objects https://api.stripe.com/v1/charges https://api.stripe.com/v1/charges/{charge_id}
   const [transactions, setTransactions] = useState([
     { id: 1, type: "Mua ETH", amount: 1000, date: "2022-03-01" },
     { id: 2, type: "Bán BTC", amount: 2500, date: "2022-03-01" },
@@ -56,9 +56,9 @@ function History() {
                       key={id}
                       className="text-center border-b border-gray-700"
                     >
-                      <td className="py-4 px-4 text-gray-900">{type}</td>
-                      <td className="py-4 px-4 text-gray-900">${amount}</td>
-                      <td className="py-6 px-4 text-gray-900">{date}</td>
+                      <td className="py-4 px-4 text-black-900">{type}</td>
+                      <td className="py-4 px-4 text-black-900">${amount}</td>
+                      <td className="py-6 px-4 text-black-900">{date}</td>
                     </tr>
                   ))}
                 </tbody>

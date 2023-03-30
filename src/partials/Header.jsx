@@ -52,7 +52,7 @@ function Header() {
                   to="/blog"
                   className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                Documentation
+                Document
                 </Link>
               </li>
               <li>
@@ -81,14 +81,6 @@ function Header() {
                 Log in
                 </Link>
               </li>
-              {/* <li>
-                <Link
-                  to="/signup"
-                  className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3"
-                >
-                Sign up
-                </Link>
-              </li> */}
             </ul>
           </nav>
         </div>
