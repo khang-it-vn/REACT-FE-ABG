@@ -32,39 +32,33 @@ function History() {
           {/* Wallet transaction history */}
           <div className="bg-white rounded-lg shadow-md p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Transaction history
+              Transaction history
             </h2>
             <div className="overflow-x-auto">
               <table className="min-w-full table-auto mx-auto">
                 <thead>
                   <tr className="text-center bg-gray-800 border-b-2 border-gray-700">
                     <th className="py-3 px-4 font-semibold text-black-700">
-                    Transaction type
+                      Transaction type
                     </th>
                     <th className="py-3 px-4 font-semibold text-gray-300">
-                    Amount
+                      Amount
                     </th>
                     <th className="py-3 px-4 font-semibold text-gray-300">
-                    Execution date
+                      Execution date
                     </th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {transactions.map((transaction) => (
+                  {transactions.map(({ id, type, amount, date }) => (
                     <tr
-                      key={transaction.id}
+                      key={id}
                       className="text-center border-b border-gray-700"
                     >
-                      <td className="py-4 px-4 text-gray-900">
-                        {transaction.type}
-                      </td>
-                      <td className="py-4 px-4 text-gray-900">
-                        ${transaction.amount}
-                      </td>
-                      <td className="py-6 px-4 text-gray-900">
-                        {transaction.date}
-                      </td>
+                      <td className="py-4 px-4 text-gray-900">{type}</td>
+                      <td className="py-4 px-4 text-gray-900">${amount}</td>
+                      <td className="py-6 px-4 text-gray-900">{date}</td>
                     </tr>
                   ))}
                 </tbody>

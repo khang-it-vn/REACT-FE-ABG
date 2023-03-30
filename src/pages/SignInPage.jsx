@@ -4,21 +4,7 @@ import Header from "../partials/Header";
 import PageIllustration from "../partials/PageIllustration";
 import Banner from "../partials/Banner";
 import { useGoogleLogin } from "react-use-googlelogin";
-// import { useGoogleAuth } from "../utils/GoogleAuthContext ";
-// import { GoogleLogin, useGoogleLogin, useGoogleLogin } from "@react-oauth/google";
-// import axios from "axios";
-
 function SignInPage() {
-  // const { signIn } = useGoogleAuth();
-  // const { googleUser } = useGoogleLogin()
-
-  // const login = useGoogleLogin({
-  //   redirect_uri: "http://localhost:5173/signin",
-  //   // flow: 'auth-code',
-  //   onSuccess: (credentialResponse) => {
-  //     console.log(credentialResponse.access_token);
-  //   },
-  // });
   const { signIn, loaded, error, user } = useGoogleLogin({
     clientId:
       "365062625571-oipgvhgr69fn34i2hahqdk1483hdqllg.apps.googleusercontent.com",
@@ -28,10 +14,6 @@ function SignInPage() {
     scope: "appleghost1101@gmail.com",
     prompt: "select_account",
   });
-
-  // if (user) {
-  //   return <div>Welcome {user.name}!</div>;
-  // }
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -58,10 +40,12 @@ function SignInPage() {
 
               {/* Form */}
               <div className="max-w-sm mx-auto">
-                {/* <form> */}
                 <div className="flex flex-wrap -mx-3">
                   <div className="w-full px-3">
-                    <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
+                    <button
+                      className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center"
+                      onClick={signIn}
+                    >
                       <svg
                         className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4"
                         viewBox="0 0 16 16"
@@ -72,19 +56,13 @@ function SignInPage() {
                         className="h-6 flex items-center border-r border-white border-opacity-25 mr-4"
                         aria-hidden="true"
                       ></span>
-                      {/* <div>
-                        <button onClick={signIn}>Sign in with Google</button>
-                      </div> */}
-                      <span
-                        className="flex-auto pl-16 pr-8 -ml-16"
-                        onClick={signIn}
-                      >
+                      <span className="flex-auto pl-16 pr-8 -ml-16">
                         Đăng nhập bằng Google
                       </span>
                     </button>
                   </div>
                 </div>
-                {/* </form> */}
+
                 <div className="flex items-center my-6">
                   <div
                     className="border-t border-gray-700 border-dotted grow mr-3"
@@ -96,6 +74,7 @@ function SignInPage() {
                     aria-hidden="true"
                   ></div>
                 </div>
+
                 <form>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
@@ -114,6 +93,7 @@ function SignInPage() {
                       />
                     </div>
                   </div>
+
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label
@@ -131,39 +111,42 @@ function SignInPage() {
                       />
                     </div>
                   </div>
+
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <div className="flex justify-between">
                         <label className="flex items-center">
                           <input type="checkbox" className="form-checkbox" />
                           <span className="text-gray-400 ml-2">
-                          Remember account
+                            Remember account
                           </span>
                         </label>
                         <Link
                           to="/reset-password"
                           className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
                         >
-                        Forgot password?
+                          Forgot password?
                         </Link>
                       </div>
                     </div>
                   </div>
+
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
                       <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">
-                      Sign in
+                        Sign in
                       </button>
                     </div>
                   </div>
                 </form>
+
                 <div className="text-gray-400 text-center mt-6">
-                You do not have an account yet ?{" "}
+                  You do not have an account yet?
                   <Link
                     to="/signup"
                     className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out"
                   >
-                  Register now
+                    Register now
                   </Link>
                 </div>
               </div>
