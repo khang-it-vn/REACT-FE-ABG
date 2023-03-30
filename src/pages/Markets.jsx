@@ -40,7 +40,7 @@ const Markets = () => {
                 .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
                 .map((market) => (
                   <tr key={market.symbol} className="border-b border-gray-300">
-                    <td className="p-3">{market.symbol}</td>
+                    <td className="p-3" >{market.symbol}</td>
                     <td className="p-3">{market.lastPrice.toLocaleString()}</td>
                     <td
                       className={`p-3 ${

@@ -52,7 +52,7 @@ function Header() {
                   to="/blog"
                   className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                Documentation
+                Document
                 </Link>
               </li>
               <li>
