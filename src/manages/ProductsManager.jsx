@@ -7,18 +7,18 @@ import { ReactFragment } from "react";
 
 function ProductsManager() {
   let [products, setProducts] = useState([
-    { id: 1, name: "Sản phẩm 1", price: 10 },
-    { id: 2, name: "Sản phẩm 2", price: 20 },
-    { id: 3, name: "Sản phẩm 3", price: 30 },
-    { id: 4, name: "Sản phẩm 1", price: 10 },
-    { id: 5, name: "Sản phẩm 2", price: 20 },
-    { id: 6, name: "Sản phẩm 3", price: 30 },
-    { id: 7, name: "Sản phẩm 1", price: 10 },
-    { id: 8, name: "Sản phẩm 2", price: 20 },
-    { id: 9, name: "Sản phẩm 3", price: 30 },
-    { id: 10, name: "Sản phẩm 1", price: 10 },
-    { id: 11, name: "Sản phẩm 2", price: 20 },
-    { id: 12, name: "Sản phẩm 3", price: 30 },
+    { id: 1, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
+    { id: 2, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
+    { id: 3, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png" },
+    { id: 4, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
+    { id: 5, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
+    { id: 6, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png" },
+    { id: 7, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
+    { id: 8, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
+    { id: 9, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png" },
+    { id: 10, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
+    { id: 11, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
+    { id: 12, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png"   },
   ]);
   let [page, setPage] = useState(0);
   const itemsPerPage = 5;
@@ -43,7 +43,6 @@ function ProductsManager() {
         .map((product, index) => ({ ...product, id: index + 1 }))
     );
   };
-  
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -62,7 +61,7 @@ function ProductsManager() {
                     <thead className="bg-black-800 text-white">
                       <tr>
                         <th className="p-3">ID</th>
-                        <th className="p-3">Name</th>
+                        <th className="p-3 text-center">Name</th>
                         <th className="p-3">Price</th>
                         <th className="p-3">Functionality</th>
                       </tr>
@@ -80,7 +79,18 @@ function ProductsManager() {
                             } hover:bg-gray-300`}
                           >
                             <td className="p-3 text-black">{product.id}</td>
-                            <td className="p-3 text-black">{product.name}</td>
+                            <td className="p-3">
+                              <div className="flex items-center">
+                                <img
+                                  src={product.image}
+                                  alt={product.name}
+                                  className="w-8 h-8 mr-2"
+                                />
+                                <span className="text-black">
+                                  {product.name}
+                                </span>
+                              </div>
+                            </td>
                             <td className="p-3 text-black">{product.price}</td>
                             <td className="p-3 text-black">
                               <button
