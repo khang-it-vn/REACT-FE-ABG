@@ -30,29 +30,29 @@ function Wallet() {
     },
   ]);
 
-  const handleClick = () => {
-    setShowForm(true);
-    setShowMpass(false);
-    setShowQR(false);
-    setShowHistory(false);
-  };
-  const handleQRClick = () => {
-    setShowQR(true);
-    setShowMpass(false);
-    setShowHistory(false);
-    setShowForm(false);
-  };
-  const handleMpass = () => {
-    setShowMpass(true);
+  const setShow = (showForm, showMpass, showQR, showHistory) => {
+    setShowForm(showForm);
+    setShowMpass(showMpass);
+    setShowQR(showQR);
+    setShowHistory(showHistory);
   };
 
-  const handleShowHistory = () => {
-    setShowHistory(true);
-    setShowMpass(false);
-    setShowForm(false);
-    setShowQR(false);
-  };
+  const handleClick = () => setShow(true, false, false, false);
 
+  const handleQRClick = () => setShow(false, false, true, false);
+
+  const handleMpass = () => setShow(false, true, false, false);
+
+  const handleShowHistory = () => setShow(false, false, false, true);
+
+  const CopyButton = ({ text }) => {
+    const [copied, setCopied] = useState(false);
+
+    const handleCopyText = () => {
+      navigator.clipboard.writeText(text);
+      setCopied(true);
+    };
+  };
   // useEffect(() => {
   //   async function fetchData() {
   //     const response = await fetch("/api/transactionHistory");
@@ -83,7 +83,7 @@ function Wallet() {
               <div class="flex flex-col md:flex-row md:items-center md:justify-between bg-gradient rounded-lg shadow-md p-8 mb-8">
                 <div class="text-center md:text-left">
                   <p class="text-xl font-semibold text-gray-900 mb-4">
-                  Current balance
+                    Current balance
                   </p>
                   <p class="text-3xl md:text-4xl font-bold text-purple-600">
                     $10,000.00
@@ -91,7 +91,7 @@ function Wallet() {
                 </div>
                 <div class="text-center md:text-right mt-4 md:mt-0">
                   <p class="text-xl font-semibold text-gray-900 mb-4">
-                  Total value
+                    Total value
                   </p>
                   <p class="text-3xl md:text-4xl font-bold text-purple-600">
                     $15,000.00
@@ -103,19 +103,19 @@ function Wallet() {
                   className="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-1 rounded"
                   onClick={handleClick}
                 >
-                Transfer
+                  Transfer
                 </button>
                 <button
                   className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-1 rounded"
                   onClick={handleQRClick}
                 >
-                Receive
+                  Receive
                 </button>
                 <button
                   className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-1 px-1 rounded"
                   onClick={handleShowHistory}
                 >
-                Transaction History
+                  Transaction History
                 </button>
               </div>
               <div className="max-w-1/2 mx-auto mt-10">
@@ -132,22 +132,31 @@ function Wallet() {
                             fgColor="#000000"
                           />
                           <p className="text-red-500 text-base mt-3 font-medium text-center">
-                          My QR Code
+                            My QR Code
                           </p>
                         </div>
                         <div className="mt-4">
-                          <a
-                            href="#"
+                          <button
                             className="btn btn-primary mr-2 px-4 py-2 rounded-md text-white font-medium bg-blue-600 hover:bg-blue-700"
+                            onClick={() =>
+                              navigator.share({
+                                url: "https://www.facebook.com/appleghostx",
+                              })
+                            }
                           >
                             Share
-                          </a>
-                          <a
-                            href="#"
+                          </button>
+                          <button
                             className="btn btn-secondary px-4 py-2 rounded-md text-green-100 font-medium bg-green-600 hover:bg-green-500"
+                            onClick={() => {
+                              navigator.clipboard.writeText(
+                                "https://www.facebook.com/appleghostx"
+                              );
+                              alert("Đã sao chép mã QR!");
+                            }}
                           >
                             Copy
-                          </a>
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -163,7 +172,8 @@ function Wallet() {
                               className="block text-black-500 text-sm font-medium mb-1"
                               htmlFor="email"
                             >
-                            Wallet address <span className="text-red-600">*</span>
+                              Wallet address{" "}
+                              <span className="text-red-600">*</span>
                             </label>
                             <input
                               id="email"
@@ -177,7 +187,8 @@ function Wallet() {
                         <div className="flex flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
                             <label className="block text-black-500 text-sm font-medium mb-1">
-                            Amount of money <span className="text-red-600">*</span>
+                              Amount of money{" "}
+                              <span className="text-red-600">*</span>
                             </label>
                             <input
                               id="money"
@@ -195,7 +206,7 @@ function Wallet() {
                         </div>
                         <div className="flex flex-wrap -mx-2 mb-4">
                           <label className="block text-black-500 text-sm font-medium mb-1">
-                          Enter mPass <span className="text-red-600">*</span>
+                            Enter mPass <span className="text-red-600">*</span>
                           </label>
                           <div className="mt-1 flex">
                             {[...Array(6)].map((_, index) => (
@@ -234,7 +245,7 @@ function Wallet() {
                           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 mt-7 rounded float-right"
                           onClick={handleMpass}
                         >
-                        Payment
+                          Payment
                         </button>
                       </form>
                     </div>
@@ -244,7 +255,7 @@ function Wallet() {
                     <div className="w-full h-full">
                       <div className="my-10">
                         <h2 className="text-white-500 text-lg font-bold mb-5">
-                        Transaction history
+                          Transaction history
                         </h2>
                         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg sm:w-100">
                           <table className="min-w-full divide-y divide-gray-200">
@@ -260,13 +271,13 @@ function Wallet() {
                                   scope="col"
                                   className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 >
-                                Sender address
+                                  Sender address
                                 </th>
                                 <th
                                   scope="col"
                                   className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                                 >
-                                Amount of money
+                                  Amount of money
                                 </th>
                               </tr>
                             </thead>
