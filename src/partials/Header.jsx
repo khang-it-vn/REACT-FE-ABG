@@ -1,13 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../utils/Dropdown";
 import Logo from "../images/ABG_logo.png";
 
-function Header() {
-  const trigger = useRef(null);
-
+const Header = () => {
   return (
-    <header className="absolute w-full z-30 bg-white-500">
+    <header className="fixed w-full z-30 bg-white text-black">
       <div className="max-w-6xl mx-auto px-10 sm:px-5">
         <div className="flex items-center justify-between h-20">
           <nav className="hidden md:flex md:grow">
@@ -24,35 +22,31 @@ function Header() {
               <li>
                 <Link
                   to="/features"
-                  className="text-black-900 hover:text-black-500 px-4 py-2 flex items-center transition duration-150 ease-in-out"
+                  className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                Market
+                  Market
                 </Link>
               </li>
-              <Dropdown title="Transaction">
-                <li>
-                  <Link
-                    to="/wallet"
-                    className="font-medium text-sm text-black-900 hover:text-purple-600 flex py-2 px-4 leading-tight"
-                  >
+              <Dropdown  title="Transaction">
+                <Link
+                  to="/wallet"
+                  className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
+                >
                   Your wallet
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/history"
-                    className="font-medium text-sm text-black-900 hover:text-purple-600 flex py-2 px-4 leading-tight"
-                  >
+                </Link>
+                <Link
+                  to="/history"
+                  className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
+                >
                   Transaction history
-                  </Link>
-                </li>
+                </Link>
               </Dropdown>
               <li>
                 <Link
-                  to="/blog"
+                  to="/document"
                   className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                Document
+                  Document
                 </Link>
               </li>
               <li>
@@ -60,15 +54,7 @@ function Header() {
                   to="/about"
                   className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
-                About us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/products"
-                  className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
-                >
-                Products
+                  About us
                 </Link>
               </li>
             </ul>
@@ -78,7 +64,7 @@ function Header() {
                   to="/signin"
                   className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
-                Log in
+                  Log in
                 </Link>
               </li>
             </ul>
@@ -87,6 +73,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;
