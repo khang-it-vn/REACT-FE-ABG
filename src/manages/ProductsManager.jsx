@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useMemo } from "react";
 import Header from "../partials/Header";
 import PageIllustration from "../partials/PageIllustration";
 import ReactPaginate from "react-paginate";
@@ -6,20 +6,23 @@ import Footer from "../partials/Footer";
 import { ReactFragment } from "react";
 
 function ProductsManager() {
-  let [products, setProducts] = useState([
-    { id: 1, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
-    { id: 2, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
-    { id: 3, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png" },
-    { id: 4, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
-    { id: 5, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
-    { id: 6, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png" },
-    { id: 7, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
-    { id: 8, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
-    { id: 9, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png" },
-    { id: 10, name: "Sản phẩm 1", price: 10, image: "src/images/ABG_logo.png" },
-    { id: 11, name: "Sản phẩm 2", price: 20, image: "src/images/ABG_logo.png" },
-    { id: 12, name: "Sản phẩm 3", price: 30, image: "src/images/ABG_logo.png"   },
-  ]);
+  const computedProducts = useMemo(() => {
+    return [
+        { id: 1, name: "Sản phẩm 1", price: 10, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg"},
+        { id: 2, name: "Sản phẩm 2", price: 20, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 3, name: "Sản phẩm 3", price: 30, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 4, name: "Sản phẩm 1", price: 10, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 5, name: "Sản phẩm 2", price: 20, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 6, name: "Sản phẩm 3", price: 30, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 7, name: "Sản phẩm 1", price: 10, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 8, name: "Sản phẩm 2", price: 20, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 9, name: "Sản phẩm 3", price: 30, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 10, name: "Sản phẩm 1", price: 10, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 11, name: "Sản phẩm 2", price: 20, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg" },
+        { id: 12, name: "Sản phẩm 3", price: 30, image: "https://antimatter.vn/wp-content/uploads/2022/11/hinh-nen-anime-800x450.jpg"   },
+      ];
+}, []);
+let [products, setProducts] = useState(computedProducts);
   let [page, setPage] = useState(0);
   const itemsPerPage = 5;
   const totalPages = Math.ceil(products.length / itemsPerPage);
