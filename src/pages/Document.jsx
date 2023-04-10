@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Header from "../partials/Header";
 import Footer from "../partials/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
+import {token, axiosClientJson} from ".././http-config/axiosClient"
 const details = {
   author: "John Doe",
   date: "01/01/2022",
@@ -38,15 +38,23 @@ function Document() {
     { id: 4, title: "Bài viết 4" },
     { id: 5, title: "Bài viết 5" },
   ]);
-
-  const handleAddPost = () => {
-    const newPost = {
-      id: posts.length + 1,
-      title: newPostTitle,
-    };
-    setPosts([...posts, newPost]);
-    setNewPostTitle("");
-  };
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axiosClientJson.get("/user/docs");
+        const data = response.data;
+        setPosts(data);
+        setSelectedPost(data[0]); // Chọn bài viết đầu tiên làm selectedPost
+      } catch (error) {
+        if (axiosClientJson.isaxiosClientError(error)) {
+          console.log(error.response.data);
+        } else {
+          console.log(error);
+        }
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden bg-black rounded-lg">
@@ -71,46 +79,21 @@ function Document() {
             </label>
           </label>
           <ul>
-            {posts
+            {posts && posts
               .filter((post) =>
                 post.title.toLowerCase().includes(searchValue.toLowerCase())
               )
-
               .map((post) => (
                 <li
-                  className={`my-select text-center ${
-                    selectedPost?.id === post.id ? "bg-blue-500" : ""
-                  }`}
-                  key={post.id}
+                  className={`my-select text-center ${selectedPost?.id_doc === post.id_doc ? "bg-blue-500" : ""
+                    }`}
+                  key={post.id_doc}
                   onClick={() => setSelectedPost(post)}
                 >
                   {post.title}
-                  <button
-                    className="ml-2 text-sm text-red-500"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setPosts(posts.filter((p) => p.id !== post.id));
-                      setSelectedPost(false);
-                    }}
-                  >
-                    Xóa
-                  </button>
                 </li>
               ))}
           </ul>
-          <button
-            className="bg-green-500 text-white p-2 rounded-md"
-            onClick={handleAddPost}
-          >
-            Add Post
-          </button>
-          <input
-            type="text"
-            value={newPostTitle}
-            placeholder="New post title"
-            className="bg-white p-2 mt-4 rounded-md"
-            onChange={(e) => setNewPostTitle(e.target.value)}
-          />
         </div>
         {/* Layout bên phải */}
         {selectedPost && (
@@ -118,11 +101,7 @@ function Document() {
             <h1 className="text-2xl font-bold mb-4 text-black">
               {selectedPost.title}
             </h1>
-            {[1, 2, 3, 4].map((index) => (
-              <p className="mb-4 text-black" key={index}>
-                {content}
-              </p>
-            ))}
+              {selectedPost.description}
             <PostDetails className="mt-auto" details={details} />
           </div>
         )}

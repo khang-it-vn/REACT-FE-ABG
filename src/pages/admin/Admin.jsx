@@ -12,7 +12,7 @@ function Admin() {
       <nav>
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
           <li style={{ display: "inline-block", marginRight: "1em" }}>
-            <Link to="/admin/users" style={{ color: "#333", textDecoration: "none", padding: "0.5em 1em" }}>
+            <Link to="/admin/document" style={{ color: "#333", textDecoration: "none", padding: "0.5em 1em" }}>
               Document Management
             </Link>
           </li>

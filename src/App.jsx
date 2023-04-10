@@ -16,10 +16,8 @@ import Markets from "./pages/Markets";
 import ProductsManager from "./manages/ProductsManager";
 import Admin from "./pages/admin/Admin";
 import Documnet from "./pages/Document";
-
-import DangNhap from './pages/DangNhap';
-
-
+import AdminDoc from "./pages/admin/AminDoc";
+import DangNhap from "./pages/DangNhap";
 function App() {
   const location = useLocation();
 
@@ -38,12 +36,10 @@ function App() {
     document.querySelector("html").style.scrollBehavior = "";
   }, [location.pathname]); // triggered on route change
 
-
-  const token = localStorage.getItem('token');
-  if(location.pathname.startsWith('/wallet') && !token) {
-    window.location.href = '/signin';
+  const token = localStorage.getItem("token");
+  if (location.pathname.startsWith("/wallet") && !token) {
+    window.location.href = "/signin";
   }
-
 
   return (
     <>
@@ -53,14 +49,12 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/wallet" element={<Wallet />} />
-
-
         <Route path="/history" element={<History />} />
         <Route path="/features" element={<Markets />} />
-        <Route path="admin/products" element={<ProductsManager />}>
-        </Route>
-        <Route path="/admin" element = {<Admin/>}/>
-        <Route path="/document" element={<Documnet/>}></Route>
+        <Route path="admin/products" element={<ProductsManager />}></Route>
+        <Route path="admin/document" element={<AdminDoc/>}></Route>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/document" element={<Documnet />}></Route>
       </Routes>
     </>
   );

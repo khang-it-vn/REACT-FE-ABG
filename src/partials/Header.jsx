@@ -24,7 +24,7 @@ const Header =  () => {
   },[token]);
 
   return (
-    <header className="fixed w-full z-30 bg-white text-black">
+    <header className="fixed w-full z-30 bg-black text-black">
       <div className="max-w-6xl mx-auto px-10 sm:px-5">
         <div className="flex items-center justify-between h-20">
           <nav className="hidden md:flex md:grow">
