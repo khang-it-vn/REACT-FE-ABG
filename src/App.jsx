@@ -16,6 +16,10 @@ import Markets from "./pages/Markets";
 import ProductsManager from "./manages/ProductsManager";
 import Admin from "./pages/admin/Admin";
 import Documnet from "./pages/Document";
+
+import DangNhap from './pages/DangNhap';
+
+
 function App() {
   const location = useLocation();
 
@@ -38,7 +42,7 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signin" element={<DangNhap />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/wallet" element={<Wallet />} />
