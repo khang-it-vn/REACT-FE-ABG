@@ -16,10 +16,17 @@ function Wallet() {
   const [historyReceive, setHistoryReceive] = useState(null);
   // init var manage state show history transfer
   const [showStranferHistory, setShowStranferHistory] = useState(true);
+  // init var manage address receiver
+  const [addressReceiver, setAddressReceiver] = useState(null);
+  // init var manage amount to sending
+  const [amount, setAmount] = useState(0);
+  // init var manange account receiver 
+  const [accountReceiver, setAccountReceiver] = useState(null);
+  // init var manage balance of account
+  const [balance,setBalance] = useState(null);
+  // init var manage user info
+  const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
 
-
-  let [balance,setBalance] = useState(null);
-  let [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
   const [showForm, setShowForm] = useState(false);
   const [showQR, setShowQR] = useState(false);
   const [showMpass, setShowMpass] = useState(false);
@@ -37,6 +44,31 @@ function Wallet() {
     const res = await axiosClientJson.get('getHistoryReceive');
     setHistoryReceive(res.data.transferDetails);
   }
+
+  // check account from address
+
+  // check account from address
+  const checkAccountFromAddress = async () => {
+    try{
+      if (addressReceiver) {
+        const res = await axiosClientJson.get('checkAccountFromAddress/' + addressReceiver);
+        // check account from address
+        if (res.status === 200) {
+          console.log(res.data);
+          setAccountReceiver(res.data);
+        } else if (res.status === 400) {
+          alert('not found');
+        } else if (res.status === 500) {
+          alert('server error');
+        }
+      } else {
+        alert('addressReceiver is undefined');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
 
   useEffect(() => {
@@ -142,12 +174,14 @@ function Wallet() {
                     <div className="max-w-sm mx-auto">
                       <div className="flex flex-col items-center justify-center my-4">
                         <div className="bg-white p-4 rounded-md shadow-lg">
+                          <div className="flex justify-content-center">
                           <QRCode
                             value={userInfo? userInfo.address: ''}
                             size={200}
                             fgColor="#000000"
                           />
-                          <p className="text-red-500 text-base mt-3 font-medium text-center">
+                          </div>
+                          <p className="text-red-700 text-base mt-3 font-medium text-center">
                           Address: {userInfo? userInfo.address: ''}
                           </p>
                         </div>
@@ -166,7 +200,7 @@ function Wallet() {
                             className="btn btn-secondary px-4 py-2 rounded-md text-green-100 font-medium bg-green-600 hover:bg-green-500"
                             onClick={() => {
                               navigator.clipboard.writeText(
-                                "https://www.facebook.com/appleghostx"
+                                userInfo.address
                               );
                               alert("Đã sao chép mã QR!");
                             }}
@@ -176,11 +210,25 @@ function Wallet() {
                         </div>
                       </div>
                     </div>
+
+
                   )}
 
                   {/* Form show nhập liệu */}
                   {showForm && (
                     <div className="max-w-sm mx-auto">
+                      {
+                        accountReceiver && (
+                          <div className="col ">
+                            <div className="row flex justify-content-center">
+                              <img src={accountReceiver.avatar} alt="Image" />
+                            </div>
+                            <div className="row flex justify-content-center">
+                              <p>{accountReceiver.fullname}</p>
+                            </div>
+                          </div>
+                        )
+                      }
                       <form className="w-full">
                         <div className="flex flex-wrap -mx-3 mb-4">
                           <div className="w-full px-3">
@@ -193,10 +241,16 @@ function Wallet() {
                             </label>
                             <input
                               id="email"
-                              type="email"
+                              type=""
                               className="form-input w-full bg-white text-black-500 border border-gray-400 py-2 px-3 rounded focus:outline-none focus:border-blue-500"
                               placeholder="Enter wallet address"
+                              value={addressReceiver}
+                              onChange={(event) => {setAddressReceiver(event.target.value);}}
+                              onBlur={() => checkAccountFromAddress()}
+
+
                               required
+                              // onBlur={() => }
                             />
                           </div>
                         </div>
@@ -208,15 +262,37 @@ function Wallet() {
                             </label>
                             <input
                               id="money"
-                              type="text"
+                              type="number"
+                              step={0.0001}
                               className="form-input w-full bg-white text-black-500 border border-gray-400 py-2 px-3 rounded focus:outline-none focus:border-blue-500"
                               placeholder="Enter the amount to be transferred"
-                              onKeyPress={(e) => {
-                                if (isNaN(parseInt(e.key))) {
-                                  e.preventDefault();
-                                }
-                              }}
+                              value={amount}
+                              onChange={(event) => { 
+                                                      if(event.target.value > parseFloat(balance) )
+                                                      {
+                                                        alert("Vượt quá số dư");
+                                                        return;
+                                                      }
+                                                      setAmount(event.target.value);
+                                                    }
+                                                  }
                               required
+                            />
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap -mx-3 mb-4">
+                          <div className="w-full px-3">
+                            <label className="block text-black-500 text-sm font-medium mb-1">
+                              Phí{" "}
+                            </label>
+                            <input
+                              id="money"
+                              type="number"
+                              step={0.0001}
+                              className="form-input w-full bg-white text-black-500 border border-gray-400 py-2 px-3 rounded focus:outline-none focus:border-blue-500"
+                              placeholder="Enter the amount to be transferred"
+                              value={amount}
+                              readOnly={true}
                             />
                           </div>
                         </div>
@@ -348,6 +424,11 @@ function Wallet() {
 
                           </tbody>
                         </table>
+                        <ul class="pagination pagination-sm"> 
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" >1</a>
+                          </li>
+                        </ul>
                       </div>)
                       // end show transfer history
                        :
@@ -411,6 +492,15 @@ function Wallet() {
 
                         </tbody>
                       </table>
+                    
+                        <ul class="pagination pagination-sm"> 
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" >1</a>
+                          </li>
+                        </ul>
+
+
+                     
                     </div>)
                     // end show receive history
                        }
