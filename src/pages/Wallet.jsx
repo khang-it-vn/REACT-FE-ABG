@@ -5,8 +5,18 @@ import PageIllustration from "../partials/PageIllustration";
 import Footer from "../partials/Footer";
 import {token, axiosClientJson} from '../http-config/axiosClient';
 
+
+
 function Wallet() {
   
+
+  // get history transfer
+  const [historyStranfer, setHistoryStranfer] = useState(null);
+  // get history receiver
+  const [historyReceive, setHistoryReceive] = useState(null);
+  // init var manage state show history transfer
+  const [showStranferHistory, setShowStranferHistory] = useState(true);
+
 
   let [balance,setBalance] = useState(null);
   let [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
@@ -14,26 +24,19 @@ function Wallet() {
   const [showQR, setShowQR] = useState(false);
   const [showMpass, setShowMpass] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
-  const [transactionHistory, setTransactionHistory] = useState([
-    {
-      id: 1,
-      date: "2022-03-01",
-      address: "appleghost1101@gmail.com",
-      amount: 100,
-    },
-    {
-      id: 2,
-      date: "2022-03-05",
-      address: "appleghost1101@gmail.com",
-      amount: 50,
-    },
-    {
-      id: 3,
-      date: "2022-03-10",
-      address: "appleghost1101@gmail.com",
-      amount: 200,
-    },
-  ]);
+  
+  // get history stranfer
+  const getHistoryStranfer = async() => {
+    const res = await axiosClientJson.get('getHistoryTransfer');
+    console.log(res.data.transferDetails);
+    setHistoryStranfer(res.data.transferDetails);
+  }
+
+  // get history receive
+  const getHistoryReceive = async() => {
+    const res = await axiosClientJson.get('getHistoryReceive');
+    setHistoryReceive(res.data.transferDetails);
+  }
 
 
   useEffect(() => {
@@ -47,11 +50,9 @@ function Wallet() {
       }
     }
     getBalance();
+    getHistoryStranfer();
+    getHistoryReceive();
   },[])
-
-
-
-
 
   const setShow = (showForm, showMpass, showQR, showHistory) => {
     setShowForm(showForm);
@@ -76,14 +77,6 @@ function Wallet() {
       setCopied(true);
     };
   };
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch("/api/transactionHistory");
-  //     const data = await response.json();
-  //     setTransactionHistory(data);
-  //   }
-  //   fetchData();
-  // }, []);
 
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
@@ -275,58 +268,152 @@ function Wallet() {
                   )}
                   {/* Form show lịch sử */}
                   {showHistory && (
-                    <div className="w-full h-full">
+                    <div className="w-full h-full b">
                       <div className="my-10">
-                        <h2 className="text-white-500 text-lg font-bold mb-5">
-                          Transaction history
-                        </h2>
-                        <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg sm:w-100">
-                          <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                              <tr>
-                                <th
-                                  scope="col"
-                                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                >
-                                  Day
-                                </th>
-                                <th
-                                  scope="col"
-                                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                >
-                                  Sender address
-                                </th>
-                                <th
-                                  scope="col"
-                                  className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                                >
-                                  Amount of money
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                              {transactionHistory.map((transaction) => (
-                                <tr key={transaction.id}>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900">
-                                      {transaction.date}
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900">
-                                      {transaction.address}
-                                    </div>
-                                  </td>
-                                  <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="text-sm text-gray-900">
-                                      {transaction.amount} $
-                                    </div>
-                                  </td>
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                        <div className="d-flex justify-content-between">
+                            <div >
+                                <h2 className="text-white-500 text-lg font-bold mb-5 btn btn-success" 
+                                  onClick={() => setShowStranferHistory(true)}>
+                                    Lịch sử gửi
+                                </h2>
+                            </div>
+                            <div>
+                                <h2 className="text-white-500 text-lg font-bold mb-5 btn btn-primary"
+                                  onClick={() => setShowStranferHistory(false)}>
+                                    Lịch sử nhận
+                                </h2>
+                            </div>
                         </div>
+
+
+                       {
+                        showStranferHistory  ? 
+                        // start show transfer history 
+                        (<div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg sm:w-100">
+                        <table className="min-w-full divide-y divide-gray-200">
+                          <thead className="bg-gray-50">
+                            <tr>
+                              <th
+                                scope="col"
+                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                              >
+                                Ngày gửi
+                              </th>
+                              <th
+                                scope="col"
+                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                              >
+                                Người nhận
+                              </th>
+                              <th
+                                scope="col"
+                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                              >
+                                Số tiền
+                              </th>
+                              <th
+                                scope="col"
+                                className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                              >
+                                Phí giao dịch
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody className="bg-white divide-y divide-gray-200">
+                            {historyStranfer && historyStranfer.map((element, index) => (
+                              <tr key={index}>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                  <div className="text-sm text-gray-900">
+                                    {element.time_create}
+                                  </div>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                  <div className="text-sm text-gray-900">
+                                    {element.receiver.fullname}
+                                  </div>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                  <div className="text-sm text-gray-900">
+                                    {element.amount} USDT
+                                  </div>
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                  <div className="text-sm text-gray-900">
+                                    {element.tip} ETH
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+
+
+                          </tbody>
+                        </table>
+                      </div>)
+                      // end show transfer history
+                       :
+                      // start show receive history
+                      ( <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg sm:w-100">
+                      <table className="min-w-full divide-y divide-gray-200">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Ngày nhận
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Người gửi
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Số tiền
+                            </th>
+                            <th
+                              scope="col"
+                              className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              Phí giao dịch
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200">
+                          {historyReceive && historyReceive.map((element, index) => (
+                            <tr key={index}>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {element.time_create}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {element.sender.fullname}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {element.amount} USDT
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="text-sm text-gray-900">
+                                  {element.tip} ETH
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+
+
+                        </tbody>
+                      </table>
+                    </div>)
+                    // end show receive history
+                       }
                       </div>
                     </div>
                   )}
