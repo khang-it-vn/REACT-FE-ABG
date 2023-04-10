@@ -3,8 +3,13 @@ import QRCode from "react-qr-code";
 import Header from "../partials/Header";
 import PageIllustration from "../partials/PageIllustration";
 import Footer from "../partials/Footer";
+import {token, axiosClientJson} from '../http-config/axiosClient';
 
 function Wallet() {
+  
+
+  let [balance,setBalance] = useState(null);
+  let [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
   const [showForm, setShowForm] = useState(false);
   const [showQR, setShowQR] = useState(false);
   const [showMpass, setShowMpass] = useState(false);
@@ -29,6 +34,24 @@ function Wallet() {
       amount: 200,
     },
   ]);
+
+
+  useEffect(() => {
+    const getBalance = async () => {
+      try {
+        const res = await axiosClientJson.get('getBalance');
+        setBalance(res.data.balance);
+        console.log(res.data); // added console.log to show res
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getBalance();
+  },[])
+
+
+
+
 
   const setShow = (showForm, showMpass, showQR, showHistory) => {
     setShowForm(showForm);
@@ -80,20 +103,20 @@ function Wallet() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 ">
             <div className="pt-32 pb-12 md:pt-40 md:pb-20 ">
               {/* Page header */}
-              <div class="flex flex-col md:flex-row md:items-center md:justify-between bg-gradient rounded-lg shadow-md p-8 mb-8">
-                <div class="text-center md:text-left">
-                  <p class="text-xl font-semibold text-gray-900 mb-4">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between bg-gradient rounded-lg shadow-md p-8 mb-8">
+                <div className="text-center md:text-left">
+                  <p className="text-xl font-semibold text-gray-900 mb-4">
                     Current balance
                   </p>
-                  <p class="text-3xl md:text-4xl font-bold text-purple-600">
-                    $10,000.00
+                  <p className="text-3xl md:text-4xl font-bold text-purple-600">
+                    {balance ?? balance} USDT
                   </p>
                 </div>
-                <div class="text-center md:text-right mt-4 md:mt-0">
-                  <p class="text-xl font-semibold text-gray-900 mb-4">
+                <div className="text-center md:text-right mt-4 md:mt-0">
+                  <p className="text-xl font-semibold text-gray-900 mb-4">
                     Total value
                   </p>
-                  <p class="text-3xl md:text-4xl font-bold text-purple-600">
+                  <p className="text-3xl md:text-4xl font-bold text-purple-600">
                     $15,000.00
                   </p>
                 </div>
@@ -127,12 +150,12 @@ function Wallet() {
                       <div className="flex flex-col items-center justify-center my-4">
                         <div className="bg-white p-4 rounded-md shadow-lg">
                           <QRCode
-                            value="https://www.facebook.com/appleghostx"
+                            value={userInfo? userInfo.address: ''}
                             size={200}
                             fgColor="#000000"
                           />
                           <p className="text-red-500 text-base mt-3 font-medium text-center">
-                            My QR Code
+                          Address: {userInfo? userInfo.address: ''}
                           </p>
                         </div>
                         <div className="mt-4">
