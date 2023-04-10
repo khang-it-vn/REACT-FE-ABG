@@ -38,6 +38,13 @@ function App() {
     document.querySelector("html").style.scrollBehavior = "";
   }, [location.pathname]); // triggered on route change
 
+
+  const token = localStorage.getItem('token');
+  if(location.pathname.startsWith('/wallet') && !token) {
+    window.location.href = '/signin';
+  }
+
+
   return (
     <>
       <Routes>
@@ -46,6 +53,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/wallet" element={<Wallet />} />
+
+
         <Route path="/history" element={<History />} />
         <Route path="/features" element={<Markets />} />
         <Route path="admin/products" element={<ProductsManager />}>
