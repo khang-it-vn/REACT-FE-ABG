@@ -101,7 +101,8 @@ function Document() {
             <h1 className="text-2xl font-bold mb-4 text-black">
               {selectedPost.title}
             </h1>
-              {selectedPost.description}
+            <p className="mt-2 text-black">{selectedPost.description}</p>
+              
             <PostDetails className="mt-auto" details={details} />
           </div>
         )}

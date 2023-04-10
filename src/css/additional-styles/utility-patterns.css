@@ -1,37 +1,83 @@
-/* Sử dụng lớp chung */
-.header {
+/* Typography */
+.h1 {
     @apply text-4xl font-extrabold leading-tight tracking-tighter;
 }
 
-.section-title {
+.h2, .h3 {
+    @apply leading-tight;
+}
+.h2 {
     @apply text-3xl font-extrabold leading-tight tracking-tighter;
 }
 
-/* Loại bỏ thuộc tính không cần thiết */
-.h2,
 .h3 {
-    @apply leading-tight;
+    @apply font-bold leading-tight;
 }
-
-.nav-link {
-    font-size: 1.1rem;
+.h4 {
+    @apply text-2xl font-bold leading-snug tracking-tight;
+}
+nav ul li a {
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
-/* Sử dụng các công cụ tối ưu hoá tự động */
+.flex {
+    font-family: "Open Sans", sans-serif;
+}
+
+.text-gray-900 {
+    color: #333;
+}
+
+.text-purple-600 {
+    color: #7048e8;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.mb-4, .mt-4 {
+    margin: 1rem 0;
+}
+
+
+.text-xl {
+    font-size: 1.25rem;
+}
+
+.text-3xl {
+    font-size: 2rem;
+}
+
+.text-4xl {
+    font-size: 2.5rem;
+}
+
 .shadow-md:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px);
     transition: all 0.2s ease-in-out;
 }
-
 .bg-gradient {
-    /* Loại bỏ vendor prefixes */
     background: linear-gradient(45deg, #7048e8, #3f51b5, #2196f3, #00bcd4, #4caf50, #f44336, #ff9800, #ffc107, #ffeb3b);
     background-size: 1800% 1800%;
     animation: gradient 20s ease infinite;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+}
+
+.form-group input {
+    margin-bottom: 0.5rem;
+}
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -47,7 +93,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f7fafc;
 }
 th,
@@ -88,38 +134,38 @@ th {
 .flex-container {
     display: flex;
     height: 100vh;
-}
-
-.main-content {
+  }
+  
+  .main-content {
     flex: 1;
-}
-
-/* CSS cho phần nội dung bài viết */
-ul {
+  }
+  
+  /* CSS cho phần nội dung bài viết */
+  ul {
     list-style: none;
     margin: 0;
     padding: 0;
-}
-
-/* CSS cho phần thông tin chi tiết */
-.container {
+  }
+  
+  /* CSS cho phần thông tin chi tiết */
+  .container {
     display: flex;
     height: 100vh;
-}
-.info {
+  }
+  .info {
     width: 25%;
     padding: 20px;
     background-color: #f1f1f1;
     text-align: center;
-}
-.info p span {
+  }
+  .info p span {
     font-weight: bold;
-}
-.article {
+  }
+  .article {
     width: 50%;
     padding: 20px;
     background-color: #fff;
-}
+  }
 
 /* Add some styles to make the table look better */
 table {
@@ -270,7 +316,7 @@ header {
     width: 100%;
     background-color: white;
     color: black;
-}
+  }
 img.logo {
     border: 2px solid white;
 }
@@ -314,29 +360,29 @@ form input {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-}
-
-.my-select:focus,
-.my-select:hover {
+  }
+  
+  .my-select:focus,
+  .my-select:hover {
     outline: none;
     box-shadow: none;
     border-color: #ced4da;
-}
-
-.my-select option {
+  }
+  
+  .my-select option {
     background-color: #fff;
     color: #495057;
-}
-
-.my-select option:hover {
+  }
+  
+  .my-select option:hover {
     background-color: #dee2e6;
     color: #495057;
-}
-
-.my-select option:checked {
+  }
+  
+  .my-select option:checked {
     background-color: #007bff;
     color: #fff;
-}
+  }
 /* Forms */
 .form-input,
 .form-textarea,

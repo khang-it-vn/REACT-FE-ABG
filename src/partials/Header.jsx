@@ -2,33 +2,31 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from "../utils/Dropdown";
 import Logo from "../images/ABG_logo.png";
-import {token, axiosClientJson} from '../http-config/axiosClient';
+import { token, axiosClientJson } from "../http-config/axiosClient";
 
-const Header =  () => {
-  
-  let [userInfo , setUserInfo]= useState(null);
+const Header = () => {
+  let [userInfo, setUserInfo] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      if(token)
-      {
+      if (token) {
         try {
-          const res = await axiosClientJson.get('/getUserInfo');
-          localStorage.setItem('userInfo', JSON.stringify(res.data[0]));
-          setUserInfo(JSON.parse(localStorage.getItem('userInfo')))
+          const res = await axiosClientJson.get("/getUserInfo");
+          localStorage.setItem("userInfo", JSON.stringify(res.data[0]));
+          setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
         } catch (error) {
           console.log(error);
         }
       }
-    }
+    };
     fetchData();
-  },[token]);
+  }, [token]);
 
   return (
-    <header className="fixed w-full z-30 bg-black text-black">
+    <header className="fixed w-full z-30 bg-black text-white">
       <div className="max-w-6xl mx-auto px-10 sm:px-5">
         <div className="flex items-center justify-between h-20">
-          <nav className="hidden md:flex md:grow">
-            <Link to="/" className="block" aria-label="Cruip">
+          <nav className="bg-black hidden md:flex md:grow">
+            <Link to="/" className="block" aria-label="Cruip" >
               <div className="rounded-full">
                 <img
                   className="w-12 h-12 rounded-full bg-white border-2 border-white-600"
@@ -41,12 +39,12 @@ const Header =  () => {
               <li>
                 <Link
                   to="/features"
-                  className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
+                  className="text-black-900 hover:text-black-500 px-4 py-2 flex items-center transition duration-150 ease-in-out"
                 >
                   Market
                 </Link>
               </li>
-              <Dropdown  title="Transaction">
+              <Dropdown title="Transaction">
                 <Link
                   to="/wallet"
                   className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
@@ -78,14 +76,18 @@ const Header =  () => {
               </li>
             </ul>
             <ul className="flex grow justify-end flex-wrap items-center">
-              {token && userInfo ? userInfo.fullname : (<li>
-                <Link
-                  to="/signin"
-                  className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
-                >
-                  Log in
-                </Link>
-              </li>)}
+              {token && userInfo ? (
+                userInfo.fullname
+              ) : (
+                <li>
+                  <Link
+                    to="/signin"
+                    className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                  >
+                    Log in
+                  </Link>
+                </li>
+              )}
             </ul>
           </nav>
         </div>

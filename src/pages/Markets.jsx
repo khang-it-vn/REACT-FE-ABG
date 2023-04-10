@@ -12,10 +12,10 @@ const Markets = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const market = await axios.get(
-        `https://rest.coinapi.io/v1/assets?apikey=0A5A08D7-BD74-48C3-BB53-356C2B715A6C`
+      const result = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=100&page=1&sparkline=false&price_change_percentage=24h`
       );
-      setMarketList(market.data);
+      setMarketList(result.data);
     };
 
     // Call the fetchData function immediately

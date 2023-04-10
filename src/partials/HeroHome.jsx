@@ -54,7 +54,7 @@ function HeroHome() {
             Welcome to ABGBANKING
             </h1>
             <p
-              className="text-xl text-gray-400 mb-8"
+              className="text-xl text-white mb-8"
               data-aos="fade-up"
               data-aos-delay="200"
             >

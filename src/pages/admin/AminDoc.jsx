@@ -83,12 +83,12 @@ function AdminDoc() {
         {/* Layout bên trái */}
         <div className="w-1/4 bg-blue-400 p-4">
           <h1 className="text-white font-bold mb-4">List Document:</h1>
-          <button
+          {/* <button
             className="bg-yellow-500 text-white p-2 rounded-md"
           // onClick={handleShowAllPosts}
           >
             Show All Posts
-          </button>
+          </button> */}
           <label className="relative">
             <input
               className="bg-white p-2 pl-10 rounded-md mb-4"
@@ -132,7 +132,7 @@ function AdminDoc() {
         <div className="w-3/4 bg-white p-4">
           <h1 className="text-black font-bold mb-4">{selectedPost.title}</h1>
           <PostDetails details={details} />
-          <p className="mt-4">{content}</p>
+          <p className="mt-4 text-black">{selectedPost.description}</p>
           <div className="mt-4">
             <input
               className="bg-white p-2 rounded-md mr-2"
