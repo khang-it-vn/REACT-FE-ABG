@@ -18,6 +18,7 @@ import Admin from "./pages/admin/Admin";
 import Documnet from "./pages/Document";
 import AdminDoc from "./pages/admin/AminDoc";
 import DangNhap from "./pages/DangNhap";
+import NFTMarket from './pages/NFTs';
 function App() {
   const location = useLocation();
 
@@ -46,6 +47,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/signin" element={<DangNhap />} />
+        <Route path="/nfts-market" element={<NFTMarket />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/wallet" element={<Wallet />} />
