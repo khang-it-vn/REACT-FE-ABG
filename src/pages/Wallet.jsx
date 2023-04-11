@@ -3,13 +3,13 @@ import QRCode from "react-qr-code";
 import Header from "../partials/Header";
 import PageIllustration from "../partials/PageIllustration";
 import Footer from "../partials/Footer";
-import {token, axiosClientJson} from '../http-config/axiosClient';
+import { token, axiosClientJson } from "../http-config/axiosClient";
 
 function Wallet() {
-  
-
-  let [balance,setBalance] = useState(null);
-  let [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
+  let [balance, setBalance] = useState(null);
+  let [userInfo, setUserInfo] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
   const [showForm, setShowForm] = useState(false);
   const [showQR, setShowQR] = useState(false);
   const [showMpass, setShowMpass] = useState(false);
@@ -35,23 +35,18 @@ function Wallet() {
     },
   ]);
 
-
   useEffect(() => {
     const getBalance = async () => {
       try {
-        const res = await axiosClientJson.get('getBalance');
+        const res = await axiosClientJson.get("getBalance");
         setBalance(res.data.balance);
         console.log(res.data); // added console.log to show res
       } catch (error) {
         console.log(error);
       }
-    }
+    };
     getBalance();
-  },[])
-
-
-
-
+  }, []);
 
   const setShow = (showForm, showMpass, showQR, showHistory) => {
     setShowForm(showForm);
@@ -150,12 +145,13 @@ function Wallet() {
                       <div className="flex flex-col items-center justify-center my-4">
                         <div className="bg-white p-4 rounded-md shadow-lg">
                           <QRCode
-                            value={userInfo? userInfo.address: ''}
+                            value={userInfo ? userInfo.address : ""}
                             size={200}
                             fgColor="#000000"
                           />
                           <p className="text-red-500 text-base mt-3 font-medium text-center">
-                          Address: {userInfo? userInfo.address: ''}
+                            {/* Address: {userInfo ? userInfo.address : ""} */}
+                            This is Wallet Address
                           </p>
                         </div>
                         <div className="mt-4">
@@ -163,7 +159,7 @@ function Wallet() {
                             className="btn btn-primary mr-2 px-4 py-2 rounded-md text-white font-medium bg-blue-600 hover:bg-blue-700"
                             onClick={() =>
                               navigator.share({
-                                url: "https://www.facebook.com/appleghostx",
+                                url: userInfo ? userInfo.address : "",
                               })
                             }
                           >
@@ -173,7 +169,7 @@ function Wallet() {
                             className="btn btn-secondary px-4 py-2 rounded-md text-green-100 font-medium bg-green-600 hover:bg-green-500"
                             onClick={() => {
                               navigator.clipboard.writeText(
-                                "https://www.facebook.com/appleghostx"
+                                userInfo ? userInfo.address : ""
                               );
                               alert("Đã sao chép mã QR!");
                             }}

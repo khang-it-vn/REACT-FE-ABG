@@ -7,6 +7,7 @@ import ReactPaginate from "react-paginate";
 const Markets = () => {
   const [marketList, setMarketList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+  const [sortType, setSortType] = useState("asc");
   const itemsPerPage = 10;
   const totalPages = Math.ceil(marketList.length / itemsPerPage);
 
@@ -32,6 +33,32 @@ const Markets = () => {
     setCurrentPage(value);
   };
 
+  const handleSort = (type) => {
+    if (type === "asc") {
+      setMarketList(
+        [...marketList].sort((a, b) => a.current_price - b.current_price)
+      );
+      setSortType("desc");
+    } else {
+      setMarketList(
+        [...marketList].sort((a, b) => b.current_price - a.current_price)
+      );
+      setSortType("asc");
+    }
+  };
+  const handleSort24 = (type) => {
+    if (type === "asc") {
+      setMarketList(
+        [...marketList].sort((a, b) => a.price_change_percentage_24h - b.price_change_percentage_24h)
+      );
+      setSortType("desc");
+    } else {
+      setMarketList(
+        [...marketList].sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h)
+      );
+      setSortType("asc");
+    }
+  };
   const renderMarketRows = () =>
     marketList
       .slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage)
@@ -50,11 +77,10 @@ const Markets = () => {
           </td>
           <td className="p-3 w-80">{market.current_price.toFixed(3)}$</td>
           <td
-            className={`p-3 w-80 ${
-              market.price_change_percentage_24h > 0
+            className={`p-3 w-80 ${market.price_change_percentage_24h > 0
                 ? "text-green-500"
                 : "text-red-500"
-            }`}
+              }`}
           >
             {market.price_change_percentage_24h > 0 ? (
               <span>
@@ -81,13 +107,20 @@ const Markets = () => {
           <table className="w-full border-collapse border-gray-300">
             <thead className="bg-white">
               <tr className="bg-gray-600 ">
-                <th className="p-3 text-left text-center text-emerald-400">
+                <th
+                  className="p-3 text-left text-center text-emerald-400"
+                  onClick={() => handleSort(sortType)}
+                >
                   Symbol
                 </th>
-                <th className="p-3 text-left text-center text-red-500">
+                <th
+                  className="p-3 text-left text-center text-red-500"
+                  onClick={() => handleSort(sortType)}
+                >
                   Current Price
                 </th>
-                <th className="p-3 text-left text-center">Price Change 24h</th>
+                <th className="p-3 text-left text-center"
+                  onClick={() => handleSort24(sortType)}>Price Change 24h</th>
               </tr>
             </thead>
             <tbody>{renderMarketRows()}</tbody>

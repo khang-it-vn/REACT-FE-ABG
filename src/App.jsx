@@ -18,6 +18,7 @@ import Admin from "./pages/admin/Admin";
 import Documnet from "./pages/Document";
 import AdminDoc from "./pages/admin/AminDoc";
 import DangNhap from "./pages/DangNhap";
+import AboutUs from "./pages/AboutUs";
 function App() {
   const location = useLocation();
 
@@ -54,6 +55,7 @@ function App() {
         <Route path="admin/products" element={<ProductsManager />}></Route>
         <Route path="admin/document" element={<AdminDoc/>}></Route>
         <Route path="/admin" element={<Admin />} />
+        <Route path="/aboutus" element={<AboutUs/>}/>
         <Route path="/document" element={<Documnet />}></Route>
       </Routes>
     </>
