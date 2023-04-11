@@ -36,6 +36,14 @@ const Header = () => {
               </div>
             </Link>
             <ul className="flex grow justify-end flex-wrap items-center">
+            <li>
+                <Link
+                  to="/"
+                  className="text-black-900 hover:text-black-500 px-4 py-2 flex items-center transition duration-150 ease-in-out"
+                >
+                  Home
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/features"
@@ -58,6 +66,14 @@ const Header = () => {
                   Transaction history
                 </Link>
               </Dropdown>
+              <li>
+                <Link
+                  to="/nfts-market"
+                  className="text-black-900 hover:text-gray-200 px-4 py-2 flex items-center transition duration-150 ease-in-out"
+                >
+                  NFTs Market
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/document"
