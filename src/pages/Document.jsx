@@ -1,12 +1,12 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../partials/Header";
 import Footer from "../partials/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import {token, axiosClientJson} from ".././http-config/axiosClient"
+import { token, axiosClientJson } from ".././http-config/axiosClient";
 const details = {
-  author: "John Doe",
-  date: "01/01/2022",
+  author: "Team Solo",
+  date: "04/04/2023",
   views: 1000,
 };
 
@@ -62,37 +62,36 @@ function Document() {
       <div className="flex flex-row min-h-screen mt-20 bg-black rounded-lg">
         {/* Layout bên trái */}
         <div className="w-1/4 bg-blue-400 p-4">
-          <h1 className="text-white font-bold mb-4">List Document:</h1>
-          <label className="relative">
-            <label className="relative">
-              <input
-                className="bg-white p-2 pl-10 rounded-md mb-4"
-                type="text"
-                placeholder="Search"
-                value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-              <FontAwesomeIcon
-                icon={faSearch}
-                className="absolute top-0 left-3 text-black"
-              />
-            </label>
-          </label>
+          <h1 className="text-white font-bold justify-content-center text-3xl font-bold mb-4 flex text-center">
+            SOLO WALLET DOCS
+          </h1>
+          <div className="relative flex">
+            <input
+              className="bg-white p-2 pl-10 rounded-md mb-4 flex-1"
+              type="text"
+              placeholder="Nhập chủ đề bạn muốn tìm kiếm"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </div>
+
           <ul>
-            {posts && posts
-              .filter((post) =>
-                post.title.toLowerCase().includes(searchValue.toLowerCase())
-              )
-              .map((post) => (
-                <li
-                  className={`my-select text-center ${selectedPost?.id_doc === post.id_doc ? "bg-blue-500" : ""
+            {posts &&
+              posts
+                .filter((post) =>
+                  post.title.toLowerCase().includes(searchValue.toLowerCase())
+                )
+                .map((post) => (
+                  <li
+                    className={`my-select text-center ${
+                      selectedPost?.id_doc === post.id_doc ? "bg-blue-500" : ""
                     }`}
-                  key={post.id_doc}
-                  onClick={() => setSelectedPost(post)}
-                >
-                  {post.title}
-                </li>
-              ))}
+                    key={post.id_doc}
+                    onClick={() => setSelectedPost(post)}
+                  >
+                    {post.title}
+                  </li>
+                ))}
           </ul>
         </div>
         {/* Layout bên phải */}
@@ -102,7 +101,7 @@ function Document() {
               {selectedPost.title}
             </h1>
             <p className="mt-2 text-black">{selectedPost.description}</p>
-              
+
             <PostDetails className="mt-auto" details={details} />
           </div>
         )}
