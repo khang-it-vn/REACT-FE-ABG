@@ -229,7 +229,7 @@ function Wallet() {
                           />
                           </div>
                           <p className="text-red-700 text-base mt-3 font-medium text-center">
-                          Address: {userInfo? userInfo.address: ''}
+                          {/* Address: {userInfo? userInfo.address: ''} */}
                           </p>
                         </div>
                         <div className="mt-4">

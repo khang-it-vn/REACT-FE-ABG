@@ -23,7 +23,7 @@ const Markets = () => {
     fetchData();
 
     // Update the data every 4 seconds
-    const intervalId = setInterval(fetchData, 4000);
+    const intervalId = setInterval(fetchData, 10000);
 
     // Cleanup the interval when the component unmounts
     return () => clearInterval(intervalId);
