@@ -26,6 +26,10 @@ function Wallet() {
   const [balance,setBalance] = useState(null);
   // init var manage user info
   const [userInfo,setUserInfo] = useState(JSON.parse(localStorage.getItem('userInfo')));
+  // init fee
+  const [fees, setFees] = useState(null);
+  // init var mpass
+  const [mpass, handleMpassChange] = useState('');
 
   const [showForm, setShowForm] = useState(false);
   const [showQR, setShowQR] = useState(false);
@@ -58,18 +62,60 @@ function Wallet() {
           setAccountReceiver(res.data);
         } else if (res.status === 400) {
           alert('not found');
+          setAccountReceiver(null)
         } else if (res.status === 500) {
           alert('server error');
         }
       } else {
-        alert('addressReceiver is undefined');
+       
       }
+    } catch (error) {
+      setAccountReceiver(null);
+    }
+  }
+
+  const getFee = async () => {
+    try {
+      const res = await axiosClientJson.get('getFees');
+      setFees(res.data.fee);
     } catch (error) {
       console.log(error);
     }
   }
 
+  const transferUSDT = async () => {
+    try {
+      const mpasstranfer = mpass.target.value;
+      if(!accountReceiver || amount <= 0|| mpasstranfer.length != 6)
+      {
+        alert("Bạn cần điền địa chỉ và số tiền muốn chuyển. Và cần điền chính xác mpass")
+        return;
+      }
+      const res = await axiosClientJson.post('transferUSDT',{
+        toAddress: accountReceiver.address,
+        amount: amount,
+        mpass: mpasstranfer
+      });
 
+      if(res.status == 200)
+      {
+        alert("Chuyển thành công");
+      }
+      
+    } catch (error) {
+      if (error.response && error.response.status) {
+        // Handle error with status code
+        if (error.response.status === 403) {
+          alert("Sai Mpass - Chuyển thất bại");
+          return;
+        }
+      } else {
+        // Handle error without status code
+        alert("Chuyển USDT thất bại " + error.message);
+      }
+    
+  }
+}
 
   useEffect(() => {
     const getBalance = async () => {
@@ -84,6 +130,7 @@ function Wallet() {
     getBalance();
     getHistoryStranfer();
     getHistoryReceive();
+    getFee();
   },[])
 
   const setShow = (showForm, showMpass, showQR, showHistory) => {
@@ -97,7 +144,9 @@ function Wallet() {
 
   const handleQRClick = () => setShow(false, false, true, false);
 
-  const handleMpass = () => setShow(false, true, false, false);
+  const handleMpass = () => {
+    transferUSDT();
+  };
 
   const handleShowHistory = () => setShow(false, false, false, true);
 
@@ -291,7 +340,7 @@ function Wallet() {
                               step={0.0001}
                               className="form-input w-full bg-white text-black-500 border border-gray-400 py-2 px-3 rounded focus:outline-none focus:border-blue-500"
                               placeholder="Enter the amount to be transferred"
-                              value={amount}
+                              value={fees}
                               readOnly={true}
                             />
                           </div>
@@ -301,36 +350,43 @@ function Wallet() {
                             Enter mPass <span className="text-red-600">*</span>
                           </label>
                           <div className="mt-1 flex">
+
                             {[...Array(6)].map((_, index) => (
                               <input
                                 key={index}
                                 type="tel"
                                 maxLength="1"
-                                className="w-11 h-11 text-center text-gray-700 border rounded-md mx-3 focus:outline-none focus:border-blue-500"
+                                className="w-11 h-11 text-center text-gray-700 border rounded-md mx-3 focus:outline-none focus:border-blue-500 mpass-input"
                                 onKeyPress={(e) => {
                                   if (isNaN(parseInt(e.key))) {
                                     e.preventDefault();
                                   }
                                 }}
+                              
                                 onInput={(e) => {
                                   const currentIndex = index;
                                   const nextInput = e.target.nextElementSibling;
-                                  const prevInput =
-                                    e.target.previousElementSibling;
+                                  const prevInput = e.target.previousElementSibling;
                                   const { value, maxLength } = e.target;
 
-                                  if (
-                                    value &&
-                                    value.length >= maxLength &&
-                                    nextInput
-                                  ) {
+                                  if (value && value.length >= maxLength && nextInput) {
                                     nextInput.focus();
                                   } else if (!value && prevInput) {
                                     prevInput.focus();
                                   }
+
+                                  const mpassValue = [...document.querySelectorAll('.mpass-input')]
+                                    .map((input) => input.value)
+                                    .join('');
+                                    handleMpassChange({ target: { value: mpassValue } });
                                 }}
+                                
                               />
                             ))}
+
+
+
+
                           </div>
                         </div>
                         <button
