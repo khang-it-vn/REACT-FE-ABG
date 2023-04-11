@@ -93,7 +93,13 @@ const Header = () => {
             </ul>
             <ul className="flex grow justify-end flex-wrap items-center">
               {token && userInfo ? (
-                userInfo.fullname
+                <Link
+                to="/wallet"
+                className="font-medium hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+              >
+                {userInfo.fullname}
+              </Link>
+                
               ) : (
                 <li>
                   <Link

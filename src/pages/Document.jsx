@@ -4,6 +4,8 @@ import Footer from "../partials/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { token, axiosClientJson } from ".././http-config/axiosClient";
+import parse from "html-react-parser";
+
 const details = {
   author: "Team Solo",
   date: "04/04/2023",
@@ -100,7 +102,7 @@ function Document() {
             <h1 className="text-2xl font-bold mb-4 text-black">
               {selectedPost.title}
             </h1>
-            <p className="mt-2 text-black">{selectedPost.description}</p>
+            <div className="mt-2 text-black">{parse(selectedPost.description)}</div>
 
             <PostDetails className="mt-auto" details={details} />
           </div>
