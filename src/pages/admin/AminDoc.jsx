@@ -3,6 +3,7 @@ import Header from "../../partials/Header";
 import Footer from "../../partials/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { CKEditor } from "ckeditor4-react";
 import {token, axiosClientJson} from "../../http-config/axiosClient";
 const details = {
   author: "John Doe",
@@ -27,6 +28,11 @@ function PostDetails({ details: { author, date, views } }) {
 }
 
 function AdminDoc() {
+
+
+  const [title, setTitle] = useState(null);
+  const [description, setDescription] = useState(null);
+
   const [selectedPost, setSelectedPost] = useState({});
   const content = "Nội dung bài viết sẽ được hiển thị ở đây.";
   const [searchValue, setSearchValue] = useState("");
@@ -54,12 +60,16 @@ function AdminDoc() {
         }
       }
     }
+
+
+    
+
     fetchData();
   }, []);
 
   const handleAddPost = () => {
-    if (newPostTitle) {
-        axiosClientJson.post("/admindoc/add", { title: newPostTitle, description:'hahahaha' }).then((res) => {
+    if (title && description ) {
+        axiosClientJson.post("/admindoc/add", { title: title, description: description }).then((res) => {
         setPosts([...posts, res.data]);
         setNewPostTitle("");
       });
@@ -130,24 +140,60 @@ function AdminDoc() {
         </div>
         {/* Layout bên phải */}
         <div className="w-3/4 bg-white p-4">
+           {/*  */}
+           <div className="card mx-auto text-center">
+           
+              <div className="card-body">
+                <div className="form-group">
+                  <label htmlFor="title">Tiêu đề</label>
+                  <input type="text" className="form-control" id="title" name='title' onChange={(evt) => setTitle(evt.target.value)} placeholder="Nhập tiêu đề bài viết" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="content-ck">Nội dung</label>
+                  <CKEditor
+                    id="moTa"
+                    data="<p>Nội dung không quá 2000 ký tự</p>"
+                    onChange={(evt) => {
+                      setDescription(evt.editor.getData());
+                      console.log(evt.editor.getData())
+                    }}
+
+
+                  />
+              <button type="submit" className="btn btn-primary bg-blue-500 text-white p-2" name="submit" onClick={() => handleAddPost()} >Add Post</button>
+
+
+
+
+
+                </div>
+                
+              </div>
+           
+        </div>
+
+
+
+          {/*  */}
           <h1 className="text-black font-bold mb-4">{selectedPost.title}</h1>
           <PostDetails details={details} />
           <p className="mt-4 text-black">{selectedPost.description}</p>
           <div className="mt-4">
-            <input
+            {/* <input
               className="bg-white p-2 rounded-md mr-2"
               type="text"
               placeholder="Title"
               value={newPostTitle}
               onChange={(e) => setNewPostTitle(e.target.value)}
-            />
-            <button
+            /> */}
+            {/* <button
               className="bg-blue-500 text-white p-2 rounded-md"
               onClick={handleAddPost}
             >
               Add Post
-            </button>
+            </button> */}
           </div>
+         
         </div>
       </div>
       <Footer />

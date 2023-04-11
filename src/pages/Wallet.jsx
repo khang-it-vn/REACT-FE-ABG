@@ -109,7 +109,7 @@ function Wallet() {
         }
       } else {
         // Handle error without status code
-        alert("Chuyển USDT thất bại " + error.message);
+        alert("Bạn cần nhập địa chỉ chính xác");
       }
     
   }
